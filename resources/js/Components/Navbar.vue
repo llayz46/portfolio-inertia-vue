@@ -1,5 +1,5 @@
 <script setup>
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 </script>
 
 <template>
@@ -18,6 +18,6 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
             <a href="/">Contact</a>
         </nav>
 
-        <PrimaryButton>Me contacter</PrimaryButton>
+        <SecondaryButton>Me contacter</SecondaryButton>
     </header>
 </template>
