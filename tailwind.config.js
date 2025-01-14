@@ -20,6 +20,7 @@ export default {
             },
             colors: {
                 'accent-green': '#0F2534',
+                'accent-purple': '#8E3BB4',
                 'primary': {
                     '50': '#EDF9FF',
                     '100': '#D7EFFF',
@@ -33,7 +34,14 @@ export default {
                     '900': '#134895',
                     '950': '#112D5A',
                 },
+                zinc: {
+                    1000: '#22292F',
+                    1050: '#15191d',
+                }
             }
+        },
+        letterSpacing: {
+            'small': '-.045em'
         }
     },
 
