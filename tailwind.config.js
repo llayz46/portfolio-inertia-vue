@@ -18,7 +18,23 @@ export default {
                 sans: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
                 'dm-sans': ['DM Sans', ...defaultTheme.fontFamily.sans],
             },
-        },
+            colors: {
+                'accent-green': '#0F2534',
+                'primary': {
+                    '50': '#EDF9FF',
+                    '100': '#D7EFFF',
+                    '200': '#B9E4FF',
+                    '300': '#88D6FF',
+                    '400': '#50BDFF',
+                    '500': '#289DFF',
+                    '600': '#0478FF',
+                    '700': '#0A67EB',
+                    '800': '#0F52BE',
+                    '900': '#134895',
+                    '950': '#112D5A',
+                },
+            }
+        }
     },
 
     plugins: [forms, typography],
