@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .workflow-step-badge-inset-shadow {
+        box-shadow: inset 0 0 12px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .secondary-button-shadow {
+        box-shadow: 0 2px 14px 0 rgba(255, 255, 255, 0.35);
+    }
+}
+
 [x-cloak] {
     display: none;
 }
