@@ -12,6 +12,14 @@
     .secondary-button-shadow {
         box-shadow: 0 2px 14px 0 rgba(255, 255, 255, 0.35);
     }
+
+    .text-stroke-1 {
+        -webkit-text-stroke: 1px #1A4C6F;
+    }
+
+    .text-shadow {
+        text-shadow: .03em .035em 0 theme('colors.accent-yellow');
+    }
 }
 
 [x-cloak] {

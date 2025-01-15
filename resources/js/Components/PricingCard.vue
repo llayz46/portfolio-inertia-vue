@@ -14,7 +14,7 @@ const plan = computed(() => {
                 price: '200€',
                 description: 'Perfect for professionals.',
                 background: 'bg-accent-green/35',
-                halo: 'essential-halo w-full h-60 -translate-y-1/3'
+                halo: 'pricing-essential-halo w-full h-60 -translate-y-1/3'
             };
         case 'advanced':
             return {
@@ -22,14 +22,14 @@ const plan = computed(() => {
                 price: '500€',
                 description: 'Great for starters.',
                 background: 'bg-accent-purple/5',
-                halo: 'advanced-halo w-full h-60 -translate-y-1/3'
+                halo: 'pricing-advanced-halo w-full h-60 -translate-y-1/3'
             };
         default:
             return {
                 title: 'Landing Page',
                 price: '80€',
                 description: 'Parfait pour présenter un produit, un service ou une idée avec impact.',
-                halo: 'default-halo w-4/5 h-2/6'
+                halo: 'pricing-default-halo w-4/5 h-2/6'
             };
     }
 });
@@ -86,17 +86,17 @@ const plan = computed(() => {
 
 
 <style scoped>
-.default-halo {
+.pricing-default-halo {
     background: radial-gradient(56% 86% at 50% -15%,hsla(0,0%,60%,.14) 0,transparent),
         radial-gradient(50% 40% at 50% -5%,hsla(0,0%,75%,.1) 0,transparent),
         radial-gradient(30% 35% at 50% -20%,rgba(255,255,255,.25) 0,transparent);
 }
 
-.essential-halo {
+.pricing-essential-halo {
     background: radial-gradient(100% 90% at 50% 0%,hsla(204,55%,13%,1) 50%,transparent);
 }
 
-.advanced-halo {
+.pricing-advanced-halo {
     background: radial-gradient(60% 75% at 50% 0%,hsla(281,51%,47%,.5) 10%,transparent);
 }
 </style>

@@ -19,8 +19,12 @@ export default {
                 'dm-sans': ['DM Sans', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'accent-green': '#0F2534',
+                'accent-green': {
+                    DEFAULT: '#0F2534',
+                    'darker': '#091821'
+                },
                 'accent-purple': '#8E3BB4',
+                'accent-yellow': '#F6C31B',
                 'primary': {
                     '50': '#EDF9FF',
                     '100': '#D7EFFF',
@@ -37,7 +41,8 @@ export default {
                 zinc: {
                     1000: '#22292F',
                     1050: '#15191d',
-                }
+                },
+                background: '#07090A'
             }
         },
         letterSpacing: {
