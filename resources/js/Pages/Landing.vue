@@ -4,6 +4,9 @@ import SvgRays from "@/Components/SvgRays.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import {onMounted, ref} from "vue";
 import HeroBlobsTopRight from "@/Components/HeroBlobsTopRight.vue";
+import LoadingScreen from "@/Components/LoadingScreen.vue";
+import LandingSection from "@/Components/LandingSection.vue";
+import FeatureCard from "@/Components/FeatureCard.vue";
 
 const h1 = ref(null)
 const heroSection = ref(null)
@@ -23,6 +26,8 @@ onMounted(() => {
 
 <template>
     <Head title="Grr paa" />
+
+<!--    <LoadingScreen />-->
 
     <section class="relative h-screen w-full overflow-hidden bg-accent-green-darker">
 <!--        <Navbar />-->
@@ -61,11 +66,29 @@ onMounted(() => {
         </svg>
 
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(43%_95%_at_50%_100%,#0F52BE33_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(40%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-40 bg-[radial-gradient(36%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(41%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-40 bg-[radial-gradient(39%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
 
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-20 bg-[radial-gradient(45%_109%_at_50%_90%,#07090A_80%,transparent_81%)] z-20 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-60 bg-[radial-gradient(48%_41%_at_50%_90%,#07090A_75%,transparent_76%)] z-20 pointer-events-none select-none" aria-hidden="true"></div>
     </section>
 
-    <main class="h-[2000px] w-full bg-background"></main>
+    <main class="w-full bg-background">
+        <LandingSection class="pb-96">
+            <template #title>
+                Des solutions digitales sur-mesure pour vos ambitions.
+            </template>
+
+            <div class="space-y-3">
+                <div class="flex gap-3">
+                    <FeatureCard title="Interfaces modernes et performantes" description="Je conçois des interfaces modernes, fluides et responsives." width="large" gradient="card-1"></FeatureCard>
+                    <FeatureCard title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
+                </div>
+
+                <div class="flex gap-3">
+                    <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
+                    <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
+                </div>
+            </div>
+        </LandingSection>
+    </main>
 </template>
