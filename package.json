@@ -21,7 +21,12 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
         "gsap": "^3.12.5",
-        "lucide-vue-next": "^0.471.0"
+        "lucide-vue-next": "^0.471.0",
+        "radix-vue": "^1.9.12",
+        "tailwind-merge": "^2.6.0",
+        "tailwindcss-animate": "^1.0.7"
     }
 }
