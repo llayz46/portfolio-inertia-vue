@@ -10,6 +10,8 @@ import FeatureCard from "@/Components/FeatureCard.vue";
 import WorkflowStepLine from "@/Components/WorkflowStepLine.vue";
 import CTACard from "@/Components/CTACard.vue";
 import PricingCard from "@/Components/PricingCard.vue";
+import FAQCollapse from "@/Components/FAQCollapse.vue";
+import Footer from "@/Components/Footer.vue";
 
 const h1 = ref(null)
 const heroSection = ref(null)
@@ -168,5 +170,21 @@ onMounted(() => {
                 <PricingCard plan="advanced"/>
             </div>
         </LandingSection>
+
+        <LandingSection>
+            <template #title>
+                Les questions qui reviennent régulièrement.
+            </template>
+
+            <div class="flex flex-col gap-3">
+                <FAQCollapse>Combien de temps faut-il pour créer une landing page ?</FAQCollapse>
+                <FAQCollapse>Quels outils utilisez-vous pour le développement ?</FAQCollapse>
+                <FAQCollapse>Votre travail inclut-il l’optimisation des performances et la sécurité du site ?</FAQCollapse>
+                <FAQCollapse>Pouvez-vous m'aider à migrer mon site existant ?</FAQCollapse>
+                <FAQCollapse>Vous occupez-vous du déploiement du site ?</FAQCollapse>
+            </div>
+        </LandingSection>
     </main>
+
+    <Footer />
 </template>
