@@ -21,6 +21,7 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
-        "gsap": "^3.12.5"
+        "gsap": "^3.12.5",
+        "lucide-vue-next": "^0.471.0"
     }
 }

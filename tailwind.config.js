@@ -21,7 +21,8 @@ export default {
             colors: {
                 'accent-green': {
                     DEFAULT: '#0F2534',
-                    'darker': '#091821'
+                    'darker': '#091821',
+                    'lighter': '#298C65'
                 },
                 'accent-purple': '#8E3BB4',
                 'accent-yellow': '#F6C31B',
@@ -50,5 +51,8 @@ export default {
         }
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms,
+        typography
+    ],
 };

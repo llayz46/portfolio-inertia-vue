@@ -7,6 +7,9 @@ import HeroBlobsTopRight from "@/Components/HeroBlobsTopRight.vue";
 import LoadingScreen from "@/Components/LoadingScreen.vue";
 import LandingSection from "@/Components/LandingSection.vue";
 import FeatureCard from "@/Components/FeatureCard.vue";
+import WorkflowStepLine from "@/Components/WorkflowStepLine.vue";
+import CTACard from "@/Components/CTACard.vue";
+import PricingCard from "@/Components/PricingCard.vue";
 
 const h1 = ref(null)
 const heroSection = ref(null)
@@ -35,7 +38,7 @@ onMounted(() => {
         <HeroBlobsTopRight/>
         <SvgRays />
 
-        <div class="flex flex-col gap-6 text-white pt-52 h-full mx-24 border-x border-dashed border-red-500 relative z-20" :style="{ paddingLeft : space.left + 'px' }" ref="heroSection">
+        <div class="flex flex-col gap-6 pt-52 h-full mx-24 border-x border-dashed border-red-500 relative z-20" :style="{ paddingLeft : space.left + 'px' }" ref="heroSection">
             <div class="relative">
                 <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-7xl" ref="h1">Votre <span class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-1.5 after:w-full after:bg-accent-yellow">développeur</span> web <br> <span class="text-stroke-1 text-shadow">fullstack</span> de confiance.</h1>
 
@@ -73,7 +76,7 @@ onMounted(() => {
     </section>
 
     <main class="w-full bg-background">
-        <LandingSection class="pb-96">
+        <LandingSection class="pt-4">
             <template #title>
                 Des solutions digitales sur-mesure pour vos ambitions.
             </template>
@@ -88,6 +91,81 @@ onMounted(() => {
                     <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
                     <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
                 </div>
+            </div>
+        </LandingSection>
+
+        <LandingSection>
+            <template #title>
+                De l'idée à la réalisation : votre projet, ma priorité.
+            </template>
+
+            <div class="relative flex flex-col gap-14">
+                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                    <template #title>
+                        Analyse et conception
+                    </template>
+                    <template #description>
+                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                    </template>
+                </WorkflowStepLine>
+
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                    <template #title>
+                        Analyse et conception
+                    </template>
+                    <template #description>
+                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                    </template>
+                </WorkflowStepLine>
+
+                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                    <template #title>
+                        Analyse et conception
+                    </template>
+                    <template #description>
+                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                    </template>
+                </WorkflowStepLine>
+
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                    <template #title>
+                        Analyse et conception
+                    </template>
+                    <template #description>
+                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                    </template>
+                </WorkflowStepLine>
+
+                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                    <template #title>
+                        Analyse et conception
+                    </template>
+                    <template #description>
+                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                    </template>
+                </WorkflowStepLine>
+
+                <span class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-[length:1px_4px] bg-[linear-gradient(to_bottom,transparent_0,transparent_50%,#262626_50%,#262626_100%)] bg-repeat-y before:w-0.5 before:h-16 before:bg-gradient-to-b before:from-background before:to-transparent before:absolute after:w-0.5 after:h-16 after:bg-gradient-to-t after:from-background after:to-transparent after:absolute after:bottom-0" role="separator" aria-hidden="true"></span>
+            </div>
+        </LandingSection>
+
+        <LandingSection section-max-width="max-w-7xl" h2-font-size="text-5xl">
+            <template #title>
+                Contactez-moi pour donner vie à vos idées.
+            </template>
+
+            <CTACard />
+        </LandingSection>
+
+        <LandingSection>
+            <template #title>
+                Explorez des plans adaptés à chaque besoin.
+            </template>
+
+            <div class="flex gap-3">
+                <PricingCard/>
+                <PricingCard plan="essential"/>
+                <PricingCard plan="advanced"/>
             </div>
         </LandingSection>
     </main>

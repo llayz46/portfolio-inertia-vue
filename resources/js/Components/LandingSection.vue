@@ -1,6 +1,19 @@
+<script setup>
+defineProps({
+    sectionMaxWidth: {
+        type: String,
+        default: 'max-w-4xl',
+    },
+    h2FontSize: {
+        type: String,
+        default: 'text-4xl',
+    },
+});
+</script>
+
 <template>
-    <section class="max-w-4xl mx-auto pt-4">
-        <h2 class="text-4xl font-medium tracking-small bg-gradient-to-t from-neutral-700 to-white to-60% bg-clip-text text-transparent mb-8">
+    <section class="mx-auto pb-40" :class="sectionMaxWidth">
+        <h2 class="text-center font-medium tracking-small text-gradient-white bg-clip-text text-transparent mb-8" :class="h2FontSize">
             <slot name="title" />
         </h2>
 

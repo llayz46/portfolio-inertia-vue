@@ -36,13 +36,13 @@ const plan = computed(() => {
 </script>
 
 <template>
-    <div class="relative overflow-hidden bg-zinc-1050 border border-zinc-1000 rounded-lg">
+    <div class="relative overflow-hidden bg-zinc-1050 border border-zinc-1000/50 rounded-lg">
         <div class="relative p-5 z-30">
             <div class="relative z-40">
-                <h3 class="text-base font-semibold text-white tracking-small">{{ plan?.title }}</h3>
+                <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
 
                 <div class="flex gap-1 items-baseline mt-5">
-                    <span class="text-4xl font-bold tracking-small text-white">{{ plan?.price }}</span>
+                    <span class="text-4xl font-bold tracking-small">{{ plan?.price }}</span>
                     <span class="text-xs tracking-small text-gray-400">Hors option</span>
                 </div>
 
@@ -68,6 +68,7 @@ const plan = computed(() => {
             <template v-if="props.plan === 'essential'">
                 <span class="pointer-events-none absolute bottom-0 left-0 bg-[radial-gradient(100%_90%_at_0%_100%,#0f2534_60%,transparent_100%)] w-[calc(100%+25%)] h-2/3" aria-hidden="true" />
                 <span class="pointer-events-none absolute bottom-0 left-0 bg-[radial-gradient(100%_40%_at_0%_100%,#256088A6_0%,transparent_100%)] w-3/5 h-2/3" aria-hidden="true" />
+                <span class="pointer-events-none absolute top-0 left-1/2 bg-primary-300/25 blur-xl -translate-y-1/2 -translate-x-1/2 w-2/5 h-12" aria-hidden="true" />
             </template>
 
             <template v-if="props.plan === 'advanced'">
@@ -75,10 +76,10 @@ const plan = computed(() => {
                 <span class="pointer-events-none absolute bottom-0 right-0 bg-[radial-gradient(80%_40%_at_100%_70%,#8E3BB459_0%,transparent_100%)] w-3/5 h-2/3" aria-hidden="true" />
             </template>
 
-            <span class="pointer-events-none absolute z-10 top-0 left-1/2 -translate-x-1/2 w-full h-2/6 bg-[url('./images/pattern.svg')] bg-[size:55px_55px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_65%_at_50%_0%,#ffffff4D_10%,transparent_70%)]" aria-hidden="true" />
+            <span class="pointer-events-none absolute z-10 top-0 left-1/2 -translate-x-1/2 w-full h-2/6 bg-[url('./images/pattern.svg')] bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_65%_at_50%_0%,#ffffff4D_10%,transparent_65%)]" aria-hidden="true" />
         </div>
 
-        <span class="pointer-events-none absolute inset-0 z-10 size-full"
+        <span class="pointer-events-none select-none absolute inset-0 z-10 size-full"
               :class="plan?.background"
               aria-hidden="true" />
     </div>
@@ -87,13 +88,15 @@ const plan = computed(() => {
 
 <style scoped>
 .pricing-default-halo {
-    background: radial-gradient(56% 86% at 50% -15%,hsla(0,0%,60%,.14) 0,transparent),
+    background:
+        radial-gradient(56% 86% at 50% -15%,hsla(0,0%,60%,.14) 0,transparent),
         radial-gradient(50% 40% at 50% -5%,hsla(0,0%,75%,.1) 0,transparent),
         radial-gradient(30% 35% at 50% -20%,rgba(255,255,255,.25) 0,transparent);
 }
 
 .pricing-essential-halo {
-    background: radial-gradient(100% 90% at 50% 0%,hsla(204,55%,13%,1) 50%,transparent);
+    background:
+        radial-gradient(70% 90% at 50% 5%,hsla(204,55%,13%,1) 0%,transparent);
 }
 
 .pricing-advanced-halo {
