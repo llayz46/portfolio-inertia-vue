@@ -36,10 +36,23 @@ const plan = computed(() => {
 </script>
 
 <template>
-    <div class="relative overflow-hidden bg-zinc-1050 border border-zinc-1000/50 rounded-lg">
-        <div class="relative p-5 z-30">
+    <div class="relative border rounded-lg"
+         :class="{
+             'bg-zinc-1050 border-zinc-1000': !(props.plan === 'essential' || props.plan === 'advanced'),
+             'bg-zinc-1050/35 border-[#256088]/30': props.plan === 'essential',
+             'bg-zinc-1050/40 border-accent-purple/20': props.plan === 'advanced'
+         }">
+        <div class="relative p-5 z-30 overflow-hidden rounded-lg">
             <div class="relative z-40">
-                <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
+                <template v-if="props.plan === 'essential'">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
+                        <span class="font-dm-sans text-xs/none py-1 px-3 rounded-full bg-accent-green/75 border border-[#256088]/50">Vedette</span>
+                    </div>
+                </template>
+                <template v-else>
+                    <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
+                </template>
 
                 <div class="flex gap-1 items-baseline mt-5">
                     <span class="text-4xl font-bold tracking-small">{{ plan?.price }}</span>
@@ -67,7 +80,7 @@ const plan = computed(() => {
 
             <template v-if="props.plan === 'essential'">
                 <span class="pointer-events-none absolute bottom-0 left-0 bg-[radial-gradient(100%_90%_at_0%_100%,#0f2534_60%,transparent_100%)] w-[calc(100%+25%)] h-2/3" aria-hidden="true" />
-                <span class="pointer-events-none absolute bottom-0 left-0 bg-[radial-gradient(100%_40%_at_0%_100%,#256088A6_0%,transparent_100%)] w-3/5 h-2/3" aria-hidden="true" />
+                <span class="pointer-events-none absolute bottom-0 left-0 bg-[radial-gradient(100%_40%_at_0%_100%,#256088_0%,transparent_100%)] w-3/5 h-2/3" aria-hidden="true" />
                 <span class="pointer-events-none absolute top-0 left-1/2 bg-primary-300/25 blur-xl -translate-y-1/2 -translate-x-1/2 w-2/5 h-12" aria-hidden="true" />
             </template>
 
@@ -79,9 +92,18 @@ const plan = computed(() => {
             <span class="pointer-events-none absolute z-10 top-0 left-1/2 -translate-x-1/2 w-full h-2/6 bg-[url('./images/pattern.svg')] bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_65%_at_50%_0%,#ffffff4D_10%,transparent_65%)]" aria-hidden="true" />
         </div>
 
-        <span class="pointer-events-none select-none absolute inset-0 z-10 size-full"
+        <span class="pointer-events-none select-none absolute rounded-lg inset-0 z-10 size-full"
               :class="plan?.background"
               aria-hidden="true" />
+
+        <template v-if="props.plan === 'essential'">
+            <span class="pointer-events-none select-none absolute -z-10 bottom-0 w-24 h-20 rounded-full bg-[#256088] blur-2xl" aria-hidden="true" />
+        </template>
+
+        <template v-if="props.plan === 'advanced'">
+            <span class="pointer-events-none select-none absolute -z-10 bottom-8 right-0 w-24 h-20 rounded-full bg-accent-purple blur-2xl" aria-hidden="true" />
+            <span class="pointer-events-none select-none absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-32 h-20 rounded-full bg-accent-purple blur-2xl" aria-hidden="true" />
+        </template>
     </div>
 </template>
 

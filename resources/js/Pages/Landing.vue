@@ -162,7 +162,7 @@ onMounted(() => {
                 Explorez des plans adaptés à chaque besoin.
             </template>
 
-            <div class="flex gap-3">
+            <div class="flex gap-3 relative z-10">
                 <PricingCard/>
                 <PricingCard plan="essential"/>
                 <PricingCard plan="advanced"/>
