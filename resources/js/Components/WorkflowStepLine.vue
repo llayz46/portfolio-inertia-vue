@@ -2,7 +2,7 @@
 import WorkflowStepBadge from "@/Components/WorkflowStepBadge.vue";
 
 defineProps({
-    step: Number,
+    step: String,
     image: String,
     imageAlt: String
 });
