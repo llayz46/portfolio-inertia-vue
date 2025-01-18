@@ -10,7 +10,7 @@ import FeatureCard from "@/Components/FeatureCard.vue";
 import WorkflowStepLine from "@/Components/WorkflowStepLine.vue";
 import CTACard from "@/Components/CTACard.vue";
 import PricingCard from "@/Components/PricingCard.vue";
-import FAQCollapse from "@/Components/FAQCollapse.vue";
+import FAQCollapse from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
 
 const h1 = ref(null)
@@ -102,7 +102,7 @@ onMounted(() => {
             </template>
 
             <div class="relative flex flex-col gap-14">
-                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -111,7 +111,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" kstep="2" image="developpement.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -120,7 +120,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -129,7 +129,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" kstep="2" image="developpement.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -138,7 +138,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
