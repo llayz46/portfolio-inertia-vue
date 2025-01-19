@@ -2,7 +2,7 @@
 import {Head} from '@inertiajs/vue3';
 import SvgRays from "@/Components/SvgRays.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import {onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import HeroBlobsTopRight from "@/Components/HeroBlobsTopRight.vue";
 import LoadingScreen from "@/Components/LoadingScreen.vue";
 import LandingSection from "@/Components/LandingSection.vue";
@@ -12,10 +12,20 @@ import CTACard from "@/Components/CTACard.vue";
 import PricingCard from "@/Components/PricingCard.vue";
 import FAQCollapse from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
+import Navbar from "@/Components/Navbar.vue";
 
 const h1 = ref(null)
 const heroSection = ref(null)
 const rightLine = ref(null)
+
+const calculateSpace = () => {
+    if (heroSection.value && h1.value) {
+        const heroRect = heroSection.value.getBoundingClientRect();
+        const h1Rect = h1.value.getBoundingClientRect();
+
+        space.value.right = Math.ceil(Math.max(0, heroRect.right - h1Rect.right));
+    }
+};
 
 const space = ref({
     left: 32,
@@ -23,10 +33,19 @@ const space = ref({
 })
 
 onMounted(() => {
-    space.value.right = heroSection.value.offsetWidth - h1.value.offsetWidth - space.value.left
+    calculateSpace()
+    window.addEventListener("resize", () => {
+        calculateSpace()
+        rightLine.value.style.width = space.value.right + 'px'
+    })
 
+    space.value.right = heroSection.value.offsetWidth - h1.value.offsetWidth - space.value.left
     rightLine.value.style.width = space.value.right + 'px'
 })
+
+onUnmounted(() => {
+    window.removeEventListener("resize", calculateSpace);
+});
 </script>
 
 <template>
@@ -34,9 +53,9 @@ onMounted(() => {
 
 <!--    <LoadingScreen />-->
 
-    <section class="relative h-screen w-full overflow-hidden bg-accent-green-darker">
-<!--        <Navbar />-->
+    <Navbar />
 
+    <section class="relative h-screen w-full overflow-hidden bg-accent-green-darker">
         <HeroBlobsTopRight/>
         <SvgRays />
 
@@ -102,7 +121,7 @@ onMounted(() => {
             </template>
 
             <div class="relative flex flex-col gap-14">
-                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -111,7 +130,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" kstep="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -120,7 +139,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -129,7 +148,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" kstep="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -138,7 +157,7 @@ onMounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine kstep="1" image="performance.jpg" imageAlt="performance">
+                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
                     <template #title>
                         Analyse et conception
                     </template>
