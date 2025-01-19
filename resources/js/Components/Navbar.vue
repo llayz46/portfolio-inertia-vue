@@ -62,10 +62,10 @@ onMounted(() => {
             </div>
 
             <div id="navbar-links" class="flex gap-44">
-                <nav class="pl-44 flex gap-5 px-6 py-2 font-dm-sans text-xs font-medium">
-                    <a href="/">Projets</a>
-                    <a href="/">Blog</a>
-                    <a href="/">Contact</a>
+                <nav class="pl-44 flex gap-1 px-6 font-dm-sans text-sm font-medium">
+                    <a href="/" class="my-auto px-2">Projets</a>
+                    <a href="/" class="my-auto px-2">Blog</a>
+                    <a href="/" class="my-auto px-2">Contact</a>
                 </nav>
 
                 <SecondaryButton>Me contacter</SecondaryButton>
