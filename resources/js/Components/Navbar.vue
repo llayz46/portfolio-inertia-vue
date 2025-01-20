@@ -12,8 +12,8 @@ onMounted(() => {
 
     gsap.to("#navbar", {
         scrollTrigger: {
-            trigger: "#navbar",
-            start: "top -10%",
+            trigger: "body",
+            start: "+90 top",
             end: "+90 bottom",
             onEnter: () => {
                 gsap.to("#navbar", {
