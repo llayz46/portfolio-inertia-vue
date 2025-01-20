@@ -2,7 +2,7 @@
 import {Head} from '@inertiajs/vue3';
 import SvgRays from "@/Components/SvgRays.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import {onMounted, onUnmounted, ref} from "vue";
+import {onMounted, onUnmounted, ref, watch} from "vue";
 import HeroBlobsTopRight from "@/Components/HeroBlobsTopRight.vue";
 import LoadingScreen from "@/Components/LoadingScreen.vue";
 import LandingSection from "@/Components/LandingSection.vue";
@@ -18,18 +18,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const loadingScreenAnimate = sessionStorage.getItem('loadingScreenComplete')
 const h1 = ref(null)
 const heroSection = ref(null)
 const rightLine = ref(null)
+const animationDelay = loadingScreenAnimate ? 0 : 5
 
 const calculateSpace = () => {
     if (heroSection.value && h1.value) {
-        const heroRect = heroSection.value.getBoundingClientRect();
-        const h1Rect = h1.value.getBoundingClientRect();
+        const heroRect = heroSection.value.getBoundingClientRect()
+        const h1Rect = h1.value.getBoundingClientRect()
 
-        space.value.right = Math.ceil(Math.max(0, heroRect.right - h1Rect.right));
+        space.value.right = Math.ceil(Math.max(0, heroRect.right - h1Rect.right))
     }
-};
+}
 
 const space = ref({
     left: 32,
@@ -51,7 +53,7 @@ onMounted(() => {
         opacity: 0,
         translateY: 20,
         duration: 0.8,
-        delay: 5,
+        delay: animationDelay,
         scrollTrigger: {
             trigger: heroSection.value,
             start: 'top 80%',
@@ -185,7 +187,7 @@ onUnmounted(() => {
 <template>
     <Head title="Grr paa" />
 
-    <LoadingScreen />
+    <LoadingScreen v-if="!loadingScreenAnimate" />
 
     <Navbar />
 
@@ -210,7 +212,7 @@ onUnmounted(() => {
                 </div>
             </div>
 
-            <p class="text-xl">Je conçois et développe des applications web modernes, performantes et sur mesure pour donner vie à vos projets. Ensemble, construisons des solutions qui feront la différence.</p>
+            <p class="text-xl max-w-4xl">Je conçois et développe des applications web modernes, performantes et sur mesure pour donner vie à vos projets. Ensemble, construisons des solutions qui feront la différence.</p>
             <PrimaryButton>Discutons de votre projet</PrimaryButton>
         </div>
 
