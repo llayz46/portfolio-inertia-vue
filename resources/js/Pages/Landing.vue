@@ -213,7 +213,7 @@ onUnmounted(() => {
             <PrimaryButton>Discutons de votre projet</PrimaryButton>
         </div>
 
-        <img loading="lazy" src="images/noise-background.png" class="absolute inset-0 pointer-events-none select-none" aria-hidden="true" alt="Noise effect on the background">
+        <div class="bg-[url('images/noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
 
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">
@@ -254,7 +254,7 @@ onUnmounted(() => {
             </template>
 
             <div class="relative flex flex-col gap-14">
-                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
+                <WorkflowStepLine step="1" image="analyse-et-conception.webp" imageAlt="Etape 1 : Analyse et conception">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -263,39 +263,39 @@ onUnmounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.webp" imageAlt="Etape 2 : Développement">
                     <template #title>
-                        Analyse et conception
+                        Développement
                     </template>
                     <template #description>
-                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                        J'utilise les technologies les plus adaptées pour créer un site performant et esthétique.
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
+                <WorkflowStepLine step="3" image="performance.webp" imageAlt="Etape 3 : Optimisation et sécurité">
                     <template #title>
-                        Analyse et conception
+                        Optimisation et sécurité
                     </template>
                     <template #description>
-                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                        Je veille à ce que votre site soit rapide et offre une expérience utilisateur fluide.
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.jpg" imageAlt="performance">
+                <WorkflowStepLine class="flex-row-reverse" step="4" image="deploiement.webp" imageAlt="Etape 4 : Livraison et déploiement">
                     <template #title>
-                        Analyse et conception
+                        Livraison et déploiement
                     </template>
                     <template #description>
-                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                        Je vous accompagne dans le lancement et le déploiement de votre projet.
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="1" image="performance.webp" imageAlt="performance">
+                <WorkflowStepLine step="5" image="maintenance-et-evolution.webp" imageAlt="Etape 5 : Maintenance et évolution">
                     <template #title>
-                        Analyse et conception
+                        Maintenance et évolution
                     </template>
                     <template #description>
-                        Je conçois une structure claire et intuitive pour une navigation optimale.
+                        Je vous propose des solutions pour faire évoluer votre site au fil du temps.
                     </template>
                 </WorkflowStepLine>
 
