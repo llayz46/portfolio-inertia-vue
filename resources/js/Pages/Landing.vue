@@ -51,6 +51,7 @@ onMounted(() => {
         opacity: 0,
         translateY: 20,
         duration: 0.8,
+        delay: 5,
         scrollTrigger: {
             trigger: heroSection.value,
             start: 'top 80%',
@@ -184,7 +185,7 @@ onUnmounted(() => {
 <template>
     <Head title="Grr paa" />
 
-<!--    <LoadingScreen />-->
+    <LoadingScreen />
 
     <Navbar />
 
