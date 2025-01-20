@@ -1,4 +1,10 @@
 <script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 defineProps({
     sectionMaxWidth: {
         type: String,
@@ -9,11 +15,29 @@ defineProps({
         default: 'text-4xl',
     },
 });
+
+onMounted(() => {
+    gsap.utils.toArray('.section-title').forEach((title) => {
+        gsap.fromTo(title, {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 90%',
+            },
+        })
+    })
+})
 </script>
 
 <template>
     <section class="mx-auto pb-40" :class="sectionMaxWidth">
-        <h2 class="text-center font-medium tracking-small text-gradient-white bg-clip-text text-transparent mb-8" :class="h2FontSize">
+        <h2 class="section-title text-center font-medium tracking-small text-gradient-white bg-clip-text text-transparent mb-8" :class="h2FontSize">
             <slot name="title" />
         </h2>
 

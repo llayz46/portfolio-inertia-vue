@@ -5,7 +5,7 @@
 <template>
     <footer class="w-full bg-background pb-8">
         <div class="max-w-4xl mx-auto flex flex-col gap-5">
-            <span class="bg-gradient-to-r from-transparent via-[#24292F] to-transparent w-full max-w-4xl h-px" aria-hidden="true"></span>
+            <span class="bg-gradient-to-r from-transparent via-[#24292F] to-background w-full max-w-4xl h-px" aria-hidden="true"></span>
 
             <div class="flex justify-between font-dm-sans text-xs">
                 <p>2024 llayz</p>

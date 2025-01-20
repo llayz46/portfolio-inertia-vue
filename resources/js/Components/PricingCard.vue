@@ -36,7 +36,7 @@ const plan = computed(() => {
 </script>
 
 <template>
-    <div class="relative border rounded-lg"
+    <div class="relative border rounded-lg pricing-card"
          :class="{
              'bg-zinc-1050 border-zinc-1000': !(props.plan === 'essential' || props.plan === 'advanced'),
              'bg-zinc-1050/35 border-[#256088]/30': props.plan === 'essential',

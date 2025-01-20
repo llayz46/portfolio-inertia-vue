@@ -13,6 +13,10 @@ import PricingCard from "@/Components/PricingCard.vue";
 import FAQCollapse from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
 import Navbar from "@/Components/Navbar.vue";
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const h1 = ref(null)
 const heroSection = ref(null)
@@ -41,6 +45,135 @@ onMounted(() => {
 
     space.value.right = heroSection.value.offsetWidth - h1.value.offsetWidth - space.value.left
     rightLine.value.style.width = space.value.right + 'px'
+
+    gsap.set('.halo-light', { opacity: 0 })
+    gsap.from(heroSection.value, {
+        opacity: 0,
+        translateY: 20,
+        duration: 0.8,
+        scrollTrigger: {
+            trigger: heroSection.value,
+            start: 'top 80%',
+        },
+        onComplete: () => {
+            gsap.to('#developer-underscore', {
+                "--after-h1-width": "100%",
+                duration: 1,
+                ease: 'power2.out',
+                delay: 0.2
+            }),
+            gsap.to('#fullstack', {
+                textShadow: '0.03em 0.035em 0 #F6C31B',
+                duration: 0.5,
+                ease: 'power2.out',
+                delay: 0.2
+            }),
+            gsap.fromTo('.halo-light', {
+                opacity: 0,
+                scale: 0.8
+            }, {
+                opacity: 1,
+                scale: 1,
+                duration: 2.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: heroSection.value,
+                    start: 'top 80%',
+                }
+            })
+        }
+    })
+
+    gsap.fromTo('.card-1, .card-3', {
+        opacity: 0,
+        translateX: -50
+    }, {
+        opacity: 1,
+        translateX: 0,
+        duration: 0.8,
+        scrollTrigger: {
+            trigger: '#section-features',
+            start: 'top 65%',
+        }
+    })
+
+    gsap.fromTo('.card-2, .card-4', {
+        opacity: 0,
+        translateX: 50
+    }, {
+        opacity: 1,
+        translateX: 0,
+        duration: 0.8,
+        scrollTrigger: {
+            trigger: '#section-features',
+            start: 'top 65%',
+        }
+    })
+
+    gsap.utils.toArray('.workflow-step-line').forEach((line) => {
+        gsap.fromTo(line, {
+            opacity: 0,
+            translateY: -35,
+            scale: 0.9
+        }, {
+            opacity: 1,
+            translateY: 0,
+            scale: 1,
+            zIndex: 10,
+            duration: 0.7,
+            scrollTrigger: {
+                trigger: line,
+                start: 'top 65%',
+            }
+        })
+    })
+
+    gsap.fromTo('#section-cta div', {
+        opacity: 0,
+        rotateX: 25,
+        scale: 1.01,
+    }, {
+        opacity: 1,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: '#section-cta',
+            start: 'top 65%',
+        }
+    })
+
+    gsap.utils.toArray('.pricing-card').forEach((card, index) => {
+        gsap.fromTo(card, {
+            opacity: 0,
+            rotateX: 30,
+            scale: 0.9,
+        }, {
+            opacity: 1,
+            rotateX: 0,
+            scale: 1,
+            duration: 1,
+            delay: index * 0.3,
+            scrollTrigger: {
+                trigger: '#section-pricing',
+                start: 'top 65%',
+            }
+        })
+    })
+
+    gsap.fromTo('.faq-collapse', {
+        opacity: 0,
+        translateY: 20,
+    }, {
+        opacity: 1,
+        translateY: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        scrollTrigger: {
+            trigger: '#section-faq',
+            start: 'top 65%',
+        }
+    })
 })
 
 onUnmounted(() => {
@@ -61,7 +194,7 @@ onUnmounted(() => {
 
         <div class="flex flex-col gap-6 pt-52 h-full mx-24 border-x border-dashed border-red-500 relative z-20" :style="{ paddingLeft : space.left + 'px' }" ref="heroSection">
             <div class="relative">
-                <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-7xl" ref="h1">Votre <span class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-1.5 after:w-full after:bg-accent-yellow">développeur</span> web <br> <span class="text-stroke-1 text-shadow">fullstack</span> de confiance.</h1>
+                <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-7xl will-change-auto" ref="h1">Votre <span id="developer-underscore" class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-1.5 after:bg-accent-yellow">développeur</span> web <br> <span id="fullstack" class="text-stroke-1">fullstack</span> de confiance.</h1>
 
                 <div class="absolute top-1/2 left-0 -translate-x-full -translate-y-1/2">
                     <div class="relative bg-primary-600 h-px" :style="{ width: space.left + 'px' }">
@@ -89,15 +222,15 @@ onUnmounted(() => {
             <path fill-rule="evenodd" clip-rule="evenodd" d="M220.86 12.6323C282.557 10.2467 306.345 91.7664 349.44 135.982C391.483 179.116 458.584 204.838 466.41 264.561C474.728 328.03 440.377 394.81 388.222 431.923C340.924 465.579 278.884 441.044 220.86 439.29C165.97 437.631 105.195 457.629 63.32 422.102C19.771 385.155 7.02877 321.125 14.9103 264.561C21.9585 213.979 69.5298 185.095 101.854 145.555C140.983 97.6896 159.083 15.021 220.86 12.6323Z" stroke="#298C65" stroke-width="25"/>
         </svg>
 
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(43%_95%_at_50%_100%,#0F52BE33_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(41%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-40 bg-[radial-gradient(39%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(43%_95%_at_50%_100%,#0F52BE33_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(41%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-40 bg-[radial-gradient(39%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
 
         <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-60 bg-[radial-gradient(48%_41%_at_50%_90%,#07090A_75%,transparent_76%)] z-20 pointer-events-none select-none" aria-hidden="true"></div>
     </section>
 
     <main class="w-full bg-background">
-        <LandingSection class="pt-4">
+        <LandingSection id="section-features" class="pt-4">
             <template #title>
                 Des solutions digitales sur-mesure pour vos ambitions.
             </template>
@@ -115,7 +248,7 @@ onUnmounted(() => {
             </div>
         </LandingSection>
 
-        <LandingSection>
+        <LandingSection id="section-workflow">
             <template #title>
                 De l'idée à la réalisation : votre projet, ma priorité.
             </template>
@@ -170,7 +303,7 @@ onUnmounted(() => {
             </div>
         </LandingSection>
 
-        <LandingSection section-max-width="max-w-7xl" h2-font-size="text-5xl">
+        <LandingSection id="section-cta" section-max-width="max-w-7xl" h2-font-size="text-5xl">
             <template #title>
                 Contactez-moi pour donner vie à vos idées.
             </template>
@@ -178,7 +311,7 @@ onUnmounted(() => {
             <CTACard />
         </LandingSection>
 
-        <LandingSection>
+        <LandingSection id="section-pricing">
             <template #title>
                 Explorez des plans adaptés à chaque besoin.
             </template>
@@ -190,7 +323,7 @@ onUnmounted(() => {
             </div>
         </LandingSection>
 
-        <LandingSection>
+        <LandingSection id="section-faq">
             <template #title>
                 Les questions qui reviennent régulièrement.
             </template>
@@ -207,3 +340,9 @@ onUnmounted(() => {
 
     <Footer />
 </template>
+
+<style scoped>
+#developer-underscore::after {
+    width: var(--after-h1-width, 0);
+}
+</style>

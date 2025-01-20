@@ -51,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <header id="navbar" class="fixed z-30 flex justify-center w-full pt-2">
+    <header id="navbar" class="fixed z-30 flex justify-center w-full pt-2 will-change-auto">
         <div class="w-fit flex justify-center items-center px-7 py-2 bg-accent-green/50 backdrop-blur-sm rounded-2xl border border-white/5 shadow-[0_0_12px_0_rgba(0,0,0,0.2)] overflow-hidden">
             <div id="navbar-logo" class="flex gap-1 items-center">
                 <svg class="size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

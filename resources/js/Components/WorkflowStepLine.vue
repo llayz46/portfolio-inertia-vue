@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex items-center justify-between w-full max-w-[796px] mx-auto">
+    <div class="flex items-center justify-between w-full max-w-[796px] mx-auto workflow-step-line">
         <div class="relative z-20">
             <img loading="lazy" :src="'images/workflow/' + image" width="300px" height="160px" class="rounded-lg min-w-[300px] aspect-video" aria-hidden="true" :alt="'Workflow image step : ' + imageAlt">
 

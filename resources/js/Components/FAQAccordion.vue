@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
         type="single"
         class="flex items-center justify-between relative z-30 overflow-hidden rounded-lg bg-gradient-to-r from-[#0D0F11] to-[#17191B] border border-[#24292F] shadow-md shadow-white/[0.02]
                before:absolute before:w-44 before:h-8 before:bg-white/60 before:left-1/2 before:-translate-x-1/2 before:-top-5 before:-translate-y-full before:blur-2xl before:-z-10
-               after:absolute after:inset-0 after:bg-[url('images/noise-faq.png')] after:opacity-75 after:-z-10"
+               after:absolute after:inset-0 after:bg-[url('images/noise-faq.png')] after:opacity-75 after:-z-10 faq-collapse"
         collapsible>
         <AccordionItem value="item-1" class="w-full">
             <AccordionTrigger class="py-3 px-6 font-dm-sans text-base w-full flex justify-between items-center">

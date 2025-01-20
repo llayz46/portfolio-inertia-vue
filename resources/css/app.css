@@ -17,10 +17,6 @@
         -webkit-text-stroke: 1px #1A4C6F;
     }
 
-    .text-shadow {
-        text-shadow: .03em .035em 0 theme('colors.accent-yellow');
-    }
-
     .text-gradient-white {
         @apply bg-gradient-to-t from-neutral-700 to-white to-60%;
     }
