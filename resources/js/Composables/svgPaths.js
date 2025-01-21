@@ -23,37 +23,6 @@ const generatePathData = (windowHeight, offsetX) => {
     return pathData += `M ${offsetX},${windowHeight} z`
 }
 
-/*function generatePathSegments(screenHeight, offsetX) {
-    const h = Math.hypot(window.innerWidth, window.innerHeight); // Diagonale de l'écran
-    const e = {
-        min: Math.max(h * 0.001, 3), // Longueur minimale d'un segment
-        max: Math.max(h * 0.025, 50), // Longueur maximale d'un segment
-        gapMin: Math.max(h * 0.01, 20), // Espace minimal entre deux segments
-        gapMax: Math.max(h * 0.15, 200), // Espace maximal entre deux segments
-    };
-
-    let pathData = "";
-    let currentY = 0;
-
-    while (currentY <= screenHeight) {
-        const y1 = currentY;
-        const y2 = Math.min(currentY + e.min + Math.random() * e.max, screenHeight);
-        const nextY = y2 + e.gapMin + Math.random() * e.gapMax;
-
-        pathData += `M ${offsetX},${y1} L ${offsetX},${y2} `;
-        currentY = nextY;
-    }
-
-    // Prolonger les segments pour une animation fluide
-    const duplicatedPath = pathData.replace(/,([0-9]+\.?[0-9]*)/g, (match, y) => `,${parseFloat(y) + screenHeight}`);
-    pathData += duplicatedPath;
-
-    // Clôturer le chemin
-    pathData += `M ${offsetX}, ${screenHeight} z`;
-
-    return pathData;
-}*/
-
 export const generatePaths = (colors, windowHeight, numPaths, minDuration = 10, maxDuration = 15) => {
     const paths = []
 
@@ -79,11 +48,22 @@ export const appendPathsToSvg = (svg, paths) => {
 
     const fragment = document.createDocumentFragment()
 
-    paths.forEach(({d, stroke, duration}) => {
+    const numPathsToBlur = Math.floor(paths.length * 0.2);
+    const blurredIndices = new Set();
+
+    while (blurredIndices.size < numPathsToBlur) {
+        const randomIndex = Math.floor(Math.random() * paths.length);
+        blurredIndices.add(randomIndex);
+    }
+
+    paths.forEach(({d, stroke, duration}, index) => {
         const path = document.createElementNS(svgNamespace, "path");
         path.setAttribute("d", d);
         path.setAttribute("stroke", stroke);
         path.style.setProperty("--animation-duration", duration);
+        if (blurredIndices.has(index)) {
+            path.style.filter = "blur(5px)";
+        }
         fragment.appendChild(path)
     })
 
