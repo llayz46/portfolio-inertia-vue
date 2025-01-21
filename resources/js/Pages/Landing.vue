@@ -20,42 +20,66 @@ gsap.registerPlugin(ScrollTrigger)
 
 const loadingScreenAnimate = sessionStorage.getItem('loadingScreenComplete')
 const h1 = ref(null)
+const heroContainer = ref(null)
 const heroSection = ref(null)
 const rightLine = ref(null)
+const leftLine = ref(null)
 const animationDelay = loadingScreenAnimate ? 0 : 5
 
 const calculateSpace = () => {
-    if (heroSection.value && h1.value) {
-        const heroRect = heroSection.value.getBoundingClientRect()
+    if (window.innerWidth > 768 && heroContainer.value && h1.value) {
+        const heroRect = heroContainer.value.getBoundingClientRect()
         const h1Rect = h1.value.getBoundingClientRect()
 
         space.value.right = Math.ceil(Math.max(0, heroRect.right - h1Rect.right))
+        space.value.left2 = 32
+    } else {
+        const heroRect = heroSection.value.getBoundingClientRect()
+        const h1Rect = h1.value.getBoundingClientRect()
+
+        space.value.left2 = Math.ceil(Math.max(0, (heroRect.width - h1Rect.width) / 2))
+        space.value.right = Math.ceil(Math.max(0, (heroRect.width - h1Rect.width) / 2))
     }
 }
 
 const space = ref({
-    left: 32,
+    left: {
+        value: 32,
+        padding: 'md:pl-8',
+        width: 'md:w-8'
+    },
+    left2: null,
     right: null
 })
 
 onMounted(() => {
     calculateSpace()
+
     window.addEventListener("resize", () => {
         calculateSpace()
+
         rightLine.value.style.width = space.value.right + 'px'
+        leftLine.value.style.width = space.value.left2 + 'px'
     })
 
-    space.value.right = heroSection.value.offsetWidth - h1.value.offsetWidth - space.value.left
+    if(window.innerWidth > 768) {
+        space.value.right = heroContainer.value.offsetWidth - h1.value.offsetWidth - space.value.left2
+    } else {
+        space.value.right = Math.ceil(Math.max(0, (heroSection.value.offsetWidth - h1.value.offsetWidth) / 2))
+        space.value.left2 = Math.ceil(Math.max(0, (heroSection.value.offsetWidth - h1.value.offsetWidth) / 2))
+        leftLine.value.style.width = space.value.left2 + 'px'
+    }
+
     rightLine.value.style.width = space.value.right + 'px'
 
     gsap.set('.halo-light', { opacity: 0 })
-    gsap.from(heroSection.value, {
+    gsap.from(heroContainer.value, {
         opacity: 0,
         translateY: 20,
         duration: 0.8,
         delay: animationDelay,
         scrollTrigger: {
-            trigger: heroSection.value,
+            trigger: heroContainer.value,
             start: 'top 80%',
         },
         onComplete: () => {
@@ -80,37 +104,67 @@ onMounted(() => {
                 duration: 2.5,
                 ease: 'power2.out',
                 scrollTrigger: {
-                    trigger: heroSection.value,
+                    trigger: heroContainer.value,
                     start: 'top 80%',
                 }
             })
         }
     })
 
-    gsap.fromTo('.card-1, .card-3', {
-        opacity: 0,
-        translateX: -50
-    }, {
-        opacity: 1,
-        translateX: 0,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '#section-features',
-            start: 'top 65%',
-        }
+    gsap.matchMedia().add('(max-width: 768px)', () => {
+        gsap.fromTo('.card-1, .card-3', {
+            opacity: 0,
+            translateY: 50
+        }, {
+            opacity: 1,
+            translateY: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '#section-features',
+                start: 'top 65%',
+            }
+        })
+
+        gsap.fromTo('.card-2, .card-4', {
+            opacity: 0,
+            translateY: 50
+        }, {
+            opacity: 1,
+            translateY: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '#section-features',
+                start: 'top 65%',
+            }
+        })
     })
 
-    gsap.fromTo('.card-2, .card-4', {
-        opacity: 0,
-        translateX: 50
-    }, {
-        opacity: 1,
-        translateX: 0,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '#section-features',
-            start: 'top 65%',
-        }
+    gsap.matchMedia().add('(min-width: 768px)', () => {
+        gsap.fromTo('.card-1, .card-3', {
+            opacity: 0,
+            translateX: -50
+        }, {
+            opacity: 1,
+            translateX: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '#section-features',
+                start: 'top 65%',
+            }
+        })
+
+        gsap.fromTo('.card-2, .card-4', {
+            opacity: 0,
+            translateX: 50
+        }, {
+            opacity: 1,
+            translateX: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '#section-features',
+                start: 'top 65%',
+            }
+        })
     })
 
     gsap.utils.toArray('.workflow-step-line').forEach((line) => {
@@ -180,8 +234,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    window.removeEventListener("resize", calculateSpace);
-});
+    window.removeEventListener("resize", calculateSpace)
+})
 </script>
 
 <template>
@@ -191,28 +245,28 @@ onUnmounted(() => {
 
     <Navbar />
 
-    <section class="relative h-screen w-full overflow-hidden bg-accent-green-darker">
+    <section class="relative h-screen max-md:flex max-md:justify-center w-full overflow-hidden bg-accent-green-darker" ref="heroSection">
         <HeroBlobsTopRight/>
         <SvgRays />
 
-        <div class="flex flex-col gap-6 pt-52 h-full mx-24 border-x border-dashed border-red-500 relative z-20" :style="{ paddingLeft : space.left + 'px' }" ref="heroSection">
+        <div class="flex flex-col max-sm:px-6 max-md:max-w-md max-md:items-center gap-6 pt-36 md:pt-52 h-full md:mx-24 md:border-x md:border-dashed md:border-red-500 relative z-20" :class="space.left.padding" ref="heroContainer">
             <div class="relative">
-                <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-7xl will-change-auto" ref="h1">Votre <span id="developer-underscore" class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-1.5 after:bg-accent-yellow">développeur</span> web <br> <span id="fullstack" class="text-stroke-1">fullstack</span> de confiance.</h1>
+                <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-4xl md:text-7xl max-md:text-center will-change-auto" ref="h1">Votre <span id="developer-underscore" class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-0.5 md:after:h-1.5 after:bg-accent-yellow">développeur</span> web <br class="max-lg:hidden"> <span id="fullstack" class="text-stroke-1">fullstack</span> de confiance.</h1>
 
                 <div class="absolute top-1/2 left-0 -translate-x-full -translate-y-1/2">
-                    <div class="relative bg-primary-600 h-px" :style="{ width: space.left + 'px' }">
-                        <span class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs py-px px-1.5 bg-primary-600 rounded-full">{{ space.left }}</span>
+                    <div class="relative bg-primary-600 h-px" :class="space.left.width" ref="leftLine">
+                        <span class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs py-px px-1.5 bg-primary-600 rounded-full">{{ space.left2 }}</span>
                     </div>
                 </div>
 
-                <div class="absolute top-1/2 right-0 -translate-y-1/2">
+                <div class="absolute top-1/2 right-0 max-md:translate-x-full -translate-y-1/2">
                     <div class="relative bg-primary-600 h-px" ref="rightLine">
                         <span class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs py-px px-1.5 bg-primary-600 rounded-full">{{ space.right }}</span>
                     </div>
                 </div>
             </div>
 
-            <p class="text-xl max-w-4xl">Je conçois et développe des applications web modernes, performantes et sur mesure pour donner vie à vos projets. Ensemble, construisons des solutions qui feront la différence.</p>
+            <p class="text-base max-md:text-center md:text-xl md:max-w-4xl">Je conçois et développe des applications web modernes, performantes et sur mesure pour donner vie à vos projets. Ensemble, construisons des solutions qui feront la différence.</p>
             <PrimaryButton>Discutons de votre projet</PrimaryButton>
         </div>
 
@@ -221,15 +275,15 @@ onUnmounted(() => {
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">
 
-        <svg class="absolute -bottom-12 -left-32 -rotate-[21deg] opacity-20 blur-md" width="481" height="463" fill="none">
+        <svg class="absolute -bottom-20 -left-40 md:-bottom-12 md:-left-32 -rotate-[21deg] opacity-20 blur-md max-md:scale-75" width="481" height="463" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M220.86 12.6323C282.557 10.2467 306.345 91.7664 349.44 135.982C391.483 179.116 458.584 204.838 466.41 264.561C474.728 328.03 440.377 394.81 388.222 431.923C340.924 465.579 278.884 441.044 220.86 439.29C165.97 437.631 105.195 457.629 63.32 422.102C19.771 385.155 7.02877 321.125 14.9103 264.561C21.9585 213.979 69.5298 185.095 101.854 145.555C140.983 97.6896 159.083 15.021 220.86 12.6323Z" stroke="#298C65" stroke-width="25"/>
         </svg>
 
-        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(43%_95%_at_50%_100%,#0F52BE33_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-72 bg-[radial-gradient(41%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
-        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-40 bg-[radial-gradient(39%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-48 md:h-56 lg:h-72 bg-[radial-gradient(43%_95%_at_50%_100%,#0F52BE33_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-48 md:h-56 lg:h-72 bg-[radial-gradient(41%_60%_at_50%_100%,#0F52BE_50%,#0F52BE00_85%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="halo-light absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-28 md:h-28 lg:h-40 bg-[radial-gradient(39%_87%_at_50%_100%,#88D6FF_45%,transparent_75%)] blur-lg z-10 pointer-events-none select-none" aria-hidden="true"></div>
 
-        <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-60 bg-[radial-gradient(48%_41%_at_50%_90%,#07090A_75%,transparent_76%)] z-20 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="absolute bottom-0 md:-bottom-4 lg:-bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%+50%)] h-28 md:h-40 lg:h-60 bg-[radial-gradient(48%_41%_at_50%_90%,#07090A_75%,transparent_78%)] lg:bg-[radial-gradient(48%_41%_at_50%_90%,#07090A_75%,transparent_76%)] z-20 pointer-events-none select-none" aria-hidden="true"></div>
     </section>
 
     <main class="w-full bg-background">
@@ -239,12 +293,21 @@ onUnmounted(() => {
             </template>
 
             <div class="space-y-3">
-                <div class="flex gap-3">
+                <div class="flex max-lg:flex-col gap-3">
                     <FeatureCard title="Interfaces modernes et performantes" description="Je conçois des interfaces modernes, fluides et responsives." width="large" gradient="card-1"></FeatureCard>
-                    <FeatureCard title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
+                    <FeatureCard class="max-lg:hidden" title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
+
+                    <div class="space-y-3 lg:hidden">
+                        <div class="flex max-sm:flex-col gap-3">
+                            <FeatureCard title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
+                            <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
+                        </div>
+
+                        <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
+                    </div>
                 </div>
 
-                <div class="flex gap-3">
+                <div class="hidden lg:flex gap-3">
                     <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
                     <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
                 </div>
@@ -256,7 +319,7 @@ onUnmounted(() => {
                 De l'idée à la réalisation : votre projet, ma priorité.
             </template>
 
-            <div class="relative flex flex-col gap-14">
+            <div class="flex flex-col justify-center items-center gap-14 mx-auto max-w-[796px] w-full h-auto relative">
                 <WorkflowStepLine step="1" image="analyse-et-conception.webp" imageAlt="Etape 1 : Analyse et conception">
                     <template #title>
                         Analyse et conception
@@ -306,7 +369,7 @@ onUnmounted(() => {
             </div>
         </LandingSection>
 
-        <LandingSection id="section-cta" section-max-width="max-w-7xl" h2-font-size="text-5xl">
+        <LandingSection id="section-cta" section-max-width="max-w-7xl" h2-font-size="text-3xl md:text-5xl">
             <template #title>
                 Contactez-moi pour donner vie à vos idées.
             </template>
@@ -319,7 +382,7 @@ onUnmounted(() => {
                 Explorez des plans adaptés à chaque besoin.
             </template>
 
-            <div class="flex gap-3 relative z-10">
+            <div class="flex flex-col md:flex-row gap-3 relative z-10">
                 <PricingCard/>
                 <PricingCard plan="essential"/>
                 <PricingCard plan="advanced"/>

@@ -21,10 +21,10 @@ const delegatedProps = computed(() => {
   <AccordionHeader>
     <AccordionTrigger
       v-bind="delegatedProps"
-      :class="cn('[&[data-state=open]>svg]:rotate-45', props.class)"
+      :class="cn('[&[data-state=open]>svg]:rotate-45 max-[400px]:pl-3 relative', props.class)"
     >
       <slot />
-      <Plus class="transition-all" size="16" />
+      <Plus class="max-[400px]:absolute top-2 right-2 transition-all flex-none" size="16" />
     </AccordionTrigger>
   </AccordionHeader>
 </template>

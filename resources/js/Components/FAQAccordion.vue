@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
                after:absolute after:inset-0 after:bg-[url('images/noise-pattern.webp')] after:bg-repeat after:-z-10 faq-collapse"
         collapsible>
         <AccordionItem value="item-1" class="w-full">
-            <AccordionTrigger class="py-3 px-6 font-dm-sans text-base w-full flex justify-between items-center">
+            <AccordionTrigger class="py-3 px-6 font-dm-sans text-left text-sm md:text-base w-full flex gap-2 justify-between items-center">
                 <slot />
                 <span class="pointer-events-none absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-44 h-full bg-[url('./images/pattern.svg')] opacity-80 bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_90%_at_50%_0%,#ffffff4D_10%,transparent_85%)]" aria-hidden="true" />
             </AccordionTrigger>

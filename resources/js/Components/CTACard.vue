@@ -5,11 +5,11 @@ import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
 
 <template>
     <div class="max-w-4xl mx-auto background-light-effect shadow-xl rounded-lg p-px relative z-20">
-        <div class="flex justify-between px-8 py-10 bg-zinc-1050 rounded-lg relative overflow-hidden">
-            <div class="flex flex-col gap-6 max-w-96">
-                <h3 class="text-4xl font-medium tracking-small text-gradient-white bg-clip-text text-transparent">Un site performant pour booster votre activité.</h3>
+        <div class="flex max-md:flex-col justify-between md:px-6 p-5 md:py-8 bg-zinc-1050 rounded-lg relative overflow-hidden">
+            <div class="flex flex-col gap-6 max-md:pb-6 md:max-w-96 z-20">
+                <h3 class="text-2xl md:text-4xl font-medium tracking-small text-gradient-white bg-clip-text text-transparent">Un site performant pour booster votre activité.</h3>
 
-                <div class="flex items-center gap-8">
+                <div class="hidden md:flex items-center gap-8">
                     <PrimaryButton>Contactez-moi</PrimaryButton>
                     <button class="flex items-center gap-1 font-dm-sans text-lg font-medium text-primary-700 hover:text-primary-600 hover:gap-2 transition-all">
                         Voir les tarifs
@@ -18,24 +18,32 @@ import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
                 </div>
             </div>
 
-            <ul class="flex flex-col justify-between text-lg tracking-small relative z-20">
-                <li class="flex gap-2 items-center">
-                    <Rocket :size="24" />
+            <ul class="max-sm:space-y-1 sm:grid sm:grid-cols-2 max-md:gap-y-1 md:flex md:flex-col justify-between text-lg tracking-small relative z-20 *:flex *:gap-2 *:items-center *:max-md:text-base">
+                <li>
+                    <Rocket :size="24" class="text-gray-500" />
                     Votre site prêt en 3 jours
                 </li>
-                <li class="flex gap-2 items-center">
-                    <Sparkles :size="24" />
+                <li class="max-md:ml-auto max-md:pr-8">
+                    <Sparkles :size="24" class="text-gray-500" />
                     100% personnalisé
                 </li>
-                <li class="flex gap-2 items-center">
-                    <Gauge :size="24" />
+                <li>
+                    <Gauge :size="24" class="text-gray-500" />
                     Optimisé pour la performance
                 </li>
-                <li class="flex gap-2 items-center">
-                    <Hammer :size="24" />
+                <li class="max-md:ml-auto max-md:pr-8">
+                    <Hammer :size="24" class="text-gray-500" />
                     Suivi après livraison
                 </li>
             </ul>
+
+            <div class="md:hidden flex flex-wrap items-center gap-x-8 gap-y-2 pt-6">
+                <PrimaryButton>Contactez-moi</PrimaryButton>
+                <button class="flex items-center gap-1 font-dm-sans text-lg font-medium text-primary-700 hover:text-primary-600 hover:gap-2 transition-all">
+                    Voir les tarifs
+                    <ArrowRight :size="18" />
+                </button>
+            </div>
 
             <span class="pointer-events-none select-none z-10 absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-3/5 aspect-[6/3] bg-primary-900/70 blur-3xl rotate-[37deg]" aria-hidden="true"></span>
             <span class="pointer-events-none select-none z-10 absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-32 h-20 bg-primary-300/80 blur-2xl" aria-hidden="true"></span>

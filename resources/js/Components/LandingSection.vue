@@ -12,7 +12,7 @@ defineProps({
     },
     h2FontSize: {
         type: String,
-        default: 'text-4xl',
+        default: 'text-2xl md:text-4xl',
     },
 });
 
@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="mx-auto pb-40" :class="sectionMaxWidth">
+    <section class="max-lg:px-6 mx-auto md:pb-40 pb-28" :class="sectionMaxWidth">
         <h2 class="section-title text-center font-medium tracking-small text-gradient-white bg-clip-text text-transparent mb-8" :class="h2FontSize">
             <slot name="title" />
         </h2>

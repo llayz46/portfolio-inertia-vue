@@ -9,7 +9,7 @@ defineProps({
 
 <template>
     <div class="relative flex z-10 h-[300px] p-4 rounded-lg"
-         :class="width === 'large' ? 'w-[61%]' : 'w-[39%]', gradient">
+         :class="width === 'large' ? 'lg:w-[61%]' : 'sm:w-1/2 lg:w-[39%]', gradient">
         <div class="relative flex flex-col gap-1 mt-auto z-10 font-dm-sans">
             <h3 class="text-base font-medium">{{ title }}</h3>
             <p class="text-sm text-zinc-500">{{ description }}</p>

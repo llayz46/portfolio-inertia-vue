@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <footer class="w-full bg-background pb-8">
+    <footer class="w-full bg-background pb-8 max-lg:px-6">
         <div class="max-w-4xl mx-auto flex flex-col gap-5">
             <span class="bg-gradient-to-r from-transparent via-[#24292F] to-background w-full max-w-4xl h-px" aria-hidden="true"></span>
 

@@ -1,5 +1,5 @@
 <template>
-    <svg class="pointer-events-none select-none overflow-visible absolute -top-8 -right-8 z-10 w-[590px] h-[650px]" viewBox="0 0 690 725"
+    <svg class="pointer-events-none select-none overflow-visible absolute -top-8 -right-8 z-10 w-[450px] md:w-[590px] h-[500px] md:h-[650px]" viewBox="0 0 690 725"
          fill="none">
         <g filter="url(#filter0_f_686_1222)" class="first:animate-blob-scale last:animate-blob-scale origin-center">
             <path fill-rule="evenodd" clip-rule="evenodd"
