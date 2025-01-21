@@ -167,22 +167,21 @@ onMounted(() => {
         })
     })
 
-    gsap.utils.toArray('.workflow-step-line').forEach((line) => {
-        gsap.fromTo(line, {
-            opacity: 0,
-            translateY: -35,
-            scale: 0.9
-        }, {
-            opacity: 1,
-            translateY: 0,
-            scale: 1,
-            zIndex: 10,
-            duration: 0.7,
-            scrollTrigger: {
-                trigger: line,
-                start: 'top 65%',
-            }
-        })
+    gsap.fromTo('.workflow-step-line', {
+        opacity: 0,
+        translateY: -35,
+        scale: 0.9
+    }, {
+        opacity: 1,
+        translateY: 0,
+        scale: 1,
+        zIndex: 10,
+        duration: 0.7,
+        stagger: 0.3,
+        scrollTrigger: {
+            trigger: '#section-workflow',
+            start: 'top 65%',
+        }
     })
 
     gsap.fromTo('#section-cta div', {

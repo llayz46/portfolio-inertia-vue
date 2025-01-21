@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex justify-center items-center gap-[20%] sm:gap-[10%] md:gap-44">
+    <div class="flex justify-center items-center gap-[20%] sm:gap-[10%] md:gap-44 workflow-step-line">
         <div class="flex justify-start items-center w-full rounded-lg relative z-20">
             <img loading="lazy" :src="'images/workflow/' + image" class="rounded-lg aspect-video" aria-hidden="true" :alt="'Workflow image step : ' + imageAlt">
 
