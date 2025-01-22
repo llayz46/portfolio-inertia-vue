@@ -89,7 +89,7 @@ const plan = computed(() => {
                 <span class="pointer-events-none absolute bottom-0 right-0 bg-[radial-gradient(80%_40%_at_100%_70%,#8E3BB459_0%,transparent_100%)] w-3/5 h-2/3" aria-hidden="true" />
             </template>
 
-            <span class="pointer-events-none absolute z-10 top-0 left-1/2 -translate-x-1/2 w-full h-2/6 bg-[url('./images/pattern.svg')] bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_65%_at_50%_0%,#ffffff4D_10%,transparent_65%)]" aria-hidden="true" />
+            <span class="pointer-events-none absolute z-10 top-0 left-1/2 -translate-x-1/2 w-full h-2/6 bg-[url('/images/pattern.svg')] bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_65%_at_50%_0%,#ffffff4D_10%,transparent_65%)]" aria-hidden="true" />
         </div>
 
         <span class="pointer-events-none select-none absolute rounded-lg inset-0 z-10 size-full"

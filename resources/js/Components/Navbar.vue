@@ -1,10 +1,9 @@
 <script setup>
-import { onMounted } from "vue";
+import {inject, onMounted} from "vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+const gsap = inject('gsap')
+const ScrollTrigger = inject('ScrollTrigger', null)
 
 onMounted(() => {
     gsap.set("#navbar", { y: -75 })

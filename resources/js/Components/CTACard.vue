@@ -47,7 +47,7 @@ import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
 
             <span class="pointer-events-none select-none z-10 absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-3/5 aspect-[6/3] bg-primary-900/70 blur-3xl rotate-[37deg]" aria-hidden="true"></span>
             <span class="pointer-events-none select-none z-10 absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-32 h-20 bg-primary-300/80 blur-2xl" aria-hidden="true"></span>
-            <span class="pointer-events-none select-none z-10 absolute top-0 right-0 h-full w-80 bg-[url('images/pattern.svg')] bg-[size:80px_80px] opacity-45 mix-blend-plus-lighter [mask-image:radial-gradient(70%_75%_at_100%_0%,black_5%,transparent_95%)]" aria-hidden="true"></span>
+            <span class="pointer-events-none select-none z-10 absolute top-0 right-0 h-full w-80 bg-[url('/images/pattern.svg')] bg-[size:80px_80px] opacity-45 mix-blend-plus-lighter [mask-image:radial-gradient(70%_75%_at_100%_0%,black_5%,transparent_95%)]" aria-hidden="true"></span>
         </div>
     </div>
 </template>

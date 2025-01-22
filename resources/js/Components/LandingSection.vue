@@ -1,9 +1,8 @@
 <script setup>
-import { onMounted } from 'vue'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { onMounted, inject } from 'vue'
 
-gsap.registerPlugin(ScrollTrigger)
+const gsap = inject('gsap')
+const ScrollTrigger = inject('ScrollTrigger', null)
 
 defineProps({
     sectionMaxWidth: {

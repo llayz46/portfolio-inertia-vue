@@ -1,8 +1,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export function useWindowSize() {
-    const windowHeight = ref(window.innerHeight)
-    const windowWidth = ref(window.innerWidth)
+    const windowHeight = ref(0)
+    const windowWidth = ref(0)
 
     const updateSize = () => {
         windowHeight.value = window.innerHeight
@@ -10,6 +10,7 @@ export function useWindowSize() {
     }
 
     onMounted(() => {
+        updateSize()
         window.addEventListener('resize', updateSize)
     })
 

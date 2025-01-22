@@ -2,7 +2,7 @@
 import {Head} from '@inertiajs/vue3';
 import SvgRays from "@/Components/SvgRays.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import {onMounted, onUnmounted, ref, watch} from "vue";
+import {inject, onMounted, onUnmounted, ref} from "vue";
 import HeroBlobsTopRight from "@/Components/HeroBlobsTopRight.vue";
 import LoadingScreen from "@/Components/LoadingScreen.vue";
 import LandingSection from "@/Components/LandingSection.vue";
@@ -13,18 +13,17 @@ import PricingCard from "@/Components/PricingCard.vue";
 import FAQCollapse from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
 import Navbar from "@/Components/Navbar.vue";
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+const gsap = inject('gsap')
+const ScrollTrigger = inject('ScrollTrigger', null)
 
-const loadingScreenAnimate = sessionStorage.getItem('loadingScreenComplete')
+const isLoadingScreenAnimate = ref(false)
 const h1 = ref(null)
 const heroContainer = ref(null)
 const heroSection = ref(null)
 const rightLine = ref(null)
 const leftLine = ref(null)
-const animationDelay = loadingScreenAnimate ? 0 : 5
+const animationDelay = ref(0)
 
 const calculateSpace = () => {
     if (window.innerWidth > 768 && heroContainer.value && h1.value) {
@@ -53,6 +52,15 @@ const space = ref({
 })
 
 onMounted(() => {
+    if (!sessionStorage.getItem('loadingScreenComplete')) {
+        sessionStorage.setItem('loadingScreenComplete', false)
+        isLoadingScreenAnimate.value = true
+    } else {
+        isLoadingScreenAnimate.value = false
+    }
+
+    animationDelay.value = isLoadingScreenAnimate.value ? 0 : 5;
+
     calculateSpace()
 
     window.addEventListener("resize", () => {
@@ -240,7 +248,7 @@ onUnmounted(() => {
 <template>
     <Head title="Grr paa" />
 
-    <LoadingScreen v-if="!loadingScreenAnimate" />
+    <LoadingScreen v-if="isLoadingScreenAnimate" />
 
     <Navbar />
 
@@ -269,7 +277,7 @@ onUnmounted(() => {
             <PrimaryButton>Discutons de votre projet</PrimaryButton>
         </div>
 
-        <div class="bg-[url('images/noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="bg-[url('/images/noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
 
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
         <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">

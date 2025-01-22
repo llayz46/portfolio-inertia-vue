@@ -14,7 +14,7 @@ defineProps({
             <h3 class="text-base font-medium">{{ title }}</h3>
             <p class="text-sm text-zinc-500">{{ description }}</p>
         </div>
-        <div class="absolute inset-px bg-[url('images/feature/card-1.jpg')] bg-cover rounded-lg before:flex before:rounded-lg before:size-full before:bg-black/35"></div>
+        <div class="absolute inset-px bg-[url('/images/feature/card-1.jpg')] bg-cover rounded-lg before:flex before:rounded-lg before:size-full before:bg-black/35"></div>
     </div>
 </template>
 
