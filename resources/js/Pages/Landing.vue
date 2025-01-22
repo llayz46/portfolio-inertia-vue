@@ -59,7 +59,7 @@ onMounted(() => {
         isLoadingScreenAnimate.value = false
     }
 
-    animationDelay.value = isLoadingScreenAnimate.value ? 0 : 5;
+    animationDelay.value = isLoadingScreenAnimate.value ? 5 : 0;
 
     calculateSpace()
 
