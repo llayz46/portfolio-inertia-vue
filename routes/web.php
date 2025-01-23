@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Resources\ProjectResource;
+use App\Http\Resources\TechnologyResource;
+use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', LandingController::class)->name('landing');
+Route::get('projects/{project}/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::middleware([
     'auth',
@@ -14,4 +20,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::resource('projects', ProjectController::class)->only(['store', 'create']);
 });
+
+Route::get('/test', fn () => [new ProjectResource(Project::with('technologies')->first()), new TechnologyResource(Technology::with('projects')->first())]);

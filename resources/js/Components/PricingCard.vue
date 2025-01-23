@@ -11,8 +11,16 @@ const plan = computed(() => {
         case 'essential':
             return {
                 title: 'Essential Web App',
-                price: '200€',
-                description: 'Perfect for professionals.',
+                price: '250€',
+                description: 'Idéal pour une application web interactive avec des fonctionnalités pratiques et modernes.',
+                features: [
+                    'Package Landing Page',
+                    'Fonctionnalités e-commerce basiques',
+                    'Intégration de services tiers (API, Dashboard, etc.)',
+                    'Animations et transitions simple',
+                    'Aide à l\'hébergement et à la mise en ligne',
+                    'Optimisation des performances',
+                ],
                 background: 'bg-accent-green/35',
                 halo: 'pricing-essential-halo w-full h-60 -translate-y-1/3'
             };
@@ -20,15 +28,31 @@ const plan = computed(() => {
             return {
                 title: 'Advanced Web App',
                 price: '500€',
-                description: 'Great for starters.',
+                description: 'Parfait pour des projets complexes offrant des fonctionnalités avancées et sur mesure.',
+                features: [
+                    'Package Essential Web App',
+                    'Fonctionnalités e-commerce avancées',
+                    'Hébergement personnalisé et sécurisé sur un serveur dédié ou VPS',
+                    'Animations et transitions avancées',
+                    'Maintenance pendant 3 mois',
+                    'Sécurité renforcée'
+                ],
                 background: 'bg-accent-purple/5',
                 halo: 'pricing-advanced-halo w-full h-60 -translate-y-1/3'
             };
         default:
             return {
                 title: 'Landing Page',
-                price: '80€',
+                price: '100€',
                 description: 'Parfait pour présenter un produit, un service ou une idée avec impact.',
+                features: [
+                    'Site entièrement responsive',
+                    'Jusqu\'à 3 pages avec plusieurs sections',
+                    'Animations et transitions basiques',
+                    'Code optimisé pour le SEO',
+                    'Structure propre et maintenable',
+                    'Structure légère pour un chargement rapide'
+                ],
                 halo: 'pricing-default-halo w-4/5 h-2/6'
             };
     }
@@ -42,36 +66,38 @@ const plan = computed(() => {
              'bg-zinc-1050/35 border-[#256088]/30': props.plan === 'essential',
              'bg-zinc-1050/40 border-accent-purple/20': props.plan === 'advanced'
          }">
-        <div class="relative p-5 z-30 overflow-hidden rounded-lg">
-            <div class="relative z-40">
-                <template v-if="props.plan === 'essential'">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
-                        <span class="font-dm-sans text-xs/none py-1 px-3 rounded-full bg-accent-green/75 border border-[#256088]/50">Vedette</span>
+        <div class="relative h-full p-5 z-30 overflow-hidden rounded-lg">
+            <div class="relative flex flex-col justify-between z-40 h-full">
+                <div>
+                    <template v-if="props.plan === 'essential'">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-base font-semibold tracking-small">{{ plan.title }}</h3>
+                            <span class="font-dm-sans text-xs/none py-1 px-3 rounded-full bg-accent-green/75 border border-[#256088]/50">Vedette</span>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <h3 class="text-base font-semibold tracking-small">{{ plan.title }}</h3>
+                    </template>
+
+                    <div class="flex gap-1 items-baseline mt-5">
+                        <span class="text-4xl font-bold tracking-small">{{ plan.price }}</span>
+                        <span class="text-xs tracking-small text-gray-400">Hors option</span>
                     </div>
-                </template>
-                <template v-else>
-                    <h3 class="text-base font-semibold tracking-small">{{ plan?.title }}</h3>
-                </template>
 
-                <div class="flex gap-1 items-baseline mt-5">
-                    <span class="text-4xl font-bold tracking-small">{{ plan?.price }}</span>
-                    <span class="text-xs tracking-small text-gray-400">Hors option</span>
+                    <div class="flex flex-col gap-6 mt-1 mb-7 font-dm-sans">
+                        <p class="text-sm font-medium text-gray-300">{{ plan.description }}</p>
+                        <ul class="space-y-2">
+                            <li v-for="feature in plan.features" class="flex items-center gap-2 text-xs text-gray-400">
+                                <svg class="size-2.5 flex-none" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.46877 2.09375C9.32815 1.95312 9.1094 1.95312 8.96877 2.09375L3.65627 7.25L1.03127 4.67187C0.89065 4.53125 0.6719 4.54687 0.531275 4.67187C0.39065 4.8125 0.406275 5.03125 0.531275 5.17187L3.2969 7.85937C3.39065 7.95312 3.51565 8 3.65627 8C3.7969 8 3.90628 7.95312 4.01565 7.85937L9.46877 2.5625C9.6094 2.45312 9.6094 2.23437 9.46877 2.09375Z" fill="#9CA3AF"/>
+                                </svg>
+                                {{ feature }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="flex flex-col gap-6 mt-1 mb-7 font-dm-sans">
-                    <p class="text-sm font-medium text-gray-300">Parfait pour présenter un produit, un service ou une idée avec impact.</p>
-                    <ul class="space-y-2">
-                        <li v-for="n in 6" class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9.46877 2.09375C9.32815 1.95312 9.1094 1.95312 8.96877 2.09375L3.65627 7.25L1.03127 4.67187C0.89065 4.53125 0.6719 4.54687 0.531275 4.67187C0.39065 4.8125 0.406275 5.03125 0.531275 5.17187L3.2969 7.85937C3.39065 7.95312 3.51565 8 3.65627 8C3.7969 8 3.90628 7.95312 4.01565 7.85937L9.46877 2.5625C9.6094 2.45312 9.6094 2.23437 9.46877 2.09375Z" fill="#9CA3AF"/>
-                            </svg>
-                            50 Api calls from the server
-                        </li>
-                    </ul>
-                </div>
-
-                <SecondaryButton class="w-full">En savoir plus</SecondaryButton>
+                <SecondaryButton class="w-full mt-auto">En savoir plus</SecondaryButton>
             </div>
 
             <span class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2"

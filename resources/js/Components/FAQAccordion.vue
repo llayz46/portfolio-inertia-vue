@@ -11,11 +11,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
         collapsible>
         <AccordionItem value="item-1" class="w-full">
             <AccordionTrigger class="py-3 px-6 font-dm-sans text-left text-sm md:text-base w-full flex gap-2 justify-between items-center">
-                <slot />
+                <slot name="question" />
                 <span class="pointer-events-none absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-44 h-full bg-[url('/images/pattern.svg')] opacity-80 bg-[size:65px_65px] mix-blend-plus-lighter [mask-image:radial-gradient(45%_90%_at_50%_0%,#ffffff4D_10%,transparent_85%)]" aria-hidden="true" />
             </AccordionTrigger>
-            <AccordionContent class="px-6 pb-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et labore laudantium nisi odit saepe sapiente sunt vero! A aliquid asperiores consectetur debitis dolor ea eius eum incidunt ipsum mollitia necessitatibus nihil odit, officiis optio quam reiciendis temporibus unde. Ab, cumque!
+            <AccordionContent class="px-6 pb-3 [&>strong]:text-gray-300">
+                <slot name="answer" />
             </AccordionContent>
         </AccordionItem>
     </Accordion>

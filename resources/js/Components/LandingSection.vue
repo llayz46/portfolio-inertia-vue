@@ -2,7 +2,6 @@
 import { onMounted, inject } from 'vue'
 
 const gsap = inject('gsap')
-const ScrollTrigger = inject('ScrollTrigger', null)
 
 defineProps({
     sectionMaxWidth: {

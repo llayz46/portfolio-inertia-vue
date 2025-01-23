@@ -3,7 +3,6 @@ import {inject, onMounted} from "vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const gsap = inject('gsap')
-const ScrollTrigger = inject('ScrollTrigger', null)
 
 onMounted(() => {
     gsap.set("#navbar", { y: -75 })
@@ -63,11 +62,11 @@ onMounted(() => {
             <div id="navbar-links" class="flex gap-4 sm:gap-20 md:gap-44">
                 <nav class="pl-4 sm:pl-20 md:pl-44 flex gap-1 sm:px-6 font-dm-sans text-xs sm:text-sm font-medium">
                     <a href="/" class="my-auto px-2">Projets</a>
-                    <a href="/" class="max-[350px]:hidden my-auto px-2">Blog</a>
                     <a href="/" class="my-auto px-2">Contact</a>
+                    <a href="/" class="my-auto px-2">Prix</a>
                 </nav>
 
-                <SecondaryButton class="max-[320px]:hidden">Me contacter</SecondaryButton>
+                <SecondaryButton class="max-[350px]:hidden">Me contacter</SecondaryButton>
             </div>
         </div>
     </header>
