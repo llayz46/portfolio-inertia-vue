@@ -4,7 +4,7 @@ import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
 </script>
 
 <template>
-    <div class="max-w-4xl mx-auto background-light-effect shadow-xl rounded-lg p-px relative z-20">
+    <div class="max-w-3xl mx-auto background-light-effect shadow-xl rounded-lg p-px relative z-20">
         <div class="flex max-md:flex-col justify-between md:px-6 p-5 md:py-8 bg-zinc-1050 rounded-lg relative overflow-hidden">
             <div class="flex flex-col gap-6 max-md:pb-6 md:max-w-96 z-20">
                 <h3 class="text-2xl md:text-4xl font-medium tracking-small text-gradient-white bg-clip-text text-transparent">Un site performant pour booster votre activité.</h3>
