@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TechnologyResource;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,9 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Technology/Create', [
+            'technologies' => fn () => TechnologyResource::collection(Technology::all())
+        ]);
     }
 
     /**
@@ -28,7 +31,14 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'unique:technologies'],
+            'icon' => ['required', 'string'],
+        ]);
+
+        Technology::create($validated);
+
+        return redirect()->route('technologies.create')->banner('Technology créer avec succès.');
     }
 
     /**

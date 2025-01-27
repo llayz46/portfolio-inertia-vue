@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Http\Resources\TechnologyResource;
 use App\Models\Project;
@@ -24,29 +25,29 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $technologies = TechnologyResource::collection(Technology::all());
-
         return inertia('Project/Create', [
-            'technologies' => $technologies
+            'technologies' => fn () => TechnologyResource::collection(Technology::all())
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required|image',
-            'slug' => 'required|string',
-            'url' => 'required|url',
-            'github' => 'nullable|url',
-            'year' => 'required|integer'
-        ]);
+        $validated = $request->validated();
 
-        $project = Project::create($data);
+        $technologies = collect($validated['technologies'])->map(fn ($technology) => $technology['id']);
+
+        Project::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'slug' => Str::slug($validated['slug']),
+            'url' => $validated['url'],
+            'github' => $validated['github'],
+            'year' => $validated['year'],
+            'image' => $validated['image']->store('projects')
+        ])->technologies()->sync($technologies);
     }
 
     /**

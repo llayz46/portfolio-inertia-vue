@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class TechnologyResource extends JsonResource
 {
@@ -12,7 +13,7 @@ class TechnologyResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'icon' => $this->icon,
+            'icon' => Str::startsWith($this->icon, 'http') ? $this->icon : 'https://api.svgl.app?search='.$this->icon,
             'projects' => ProjectResource::collection($this->whenLoaded('projects')),
         ];
     }

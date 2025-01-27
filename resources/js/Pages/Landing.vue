@@ -16,7 +16,7 @@ import Navbar from "@/Components/Navbar.vue";
 
 const gsap = inject('gsap')
 
-const loadingScreenAnimate = sessionStorage.getItem('loadingScreenComplete') ? ref(false) : ref(true)
+const loadingScreenAnimate = ref(null)
 const h1 = ref(null)
 const heroContainer = ref(null)
 const heroSection = ref(null)
@@ -51,6 +51,7 @@ const space = ref({
 })
 
 onMounted(() => {
+    loadingScreenAnimate.value = sessionStorage.getItem('loadingScreenComplete')
     animationDelay.value = loadingScreenAnimate.value ? 5 : 0;
 
     calculateSpace()
