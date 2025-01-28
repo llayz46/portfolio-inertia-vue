@@ -13,6 +13,11 @@ import PricingCard from "@/Components/PricingCard.vue";
 import FAQAccordion from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
 import Navbar from "@/Components/Navbar.vue";
+import ProjectCard from "@/Components/ProjectCard.vue";
+
+defineProps({
+    projects: Array
+})
 
 const gsap = inject('gsap')
 
@@ -200,6 +205,53 @@ onMounted(() => {
         }
     })
 
+    gsap.utils.toArray('.project-card').forEach((card) => {
+        const q = gsap.utils.selector(card)
+
+        gsap.fromTo(q('img'), {
+            opacity: 0,
+            scale: 0.75,
+        }, {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 65%',
+            }
+        })
+
+        gsap.fromTo(q('div a'), {
+            opacity: 0,
+            translateY: -80,
+        }, {
+            opacity: 1,
+            translateY: 0,
+            duration: 1,
+            delay: 0.7,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 65%',
+            }
+        })
+
+        gsap.fromTo(q('div ul li'), {
+            opacity: 0,
+            scale: 0.8
+        }, {
+            opacity: 1,
+            translateY: 0,
+            scale: 1,
+            duration: 0.2,
+            stagger: 0.3,
+            delay: 1.01,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 65%',
+            }
+        })
+    })
+
     gsap.utils.toArray('.pricing-card').forEach((card, index) => {
         gsap.fromTo(card, {
             opacity: 0,
@@ -239,7 +291,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Grr paa" />
+    <Head title="Portfolio" />
 
     <LoadingScreen v-if="loadingScreenAnimate" />
 
@@ -249,7 +301,7 @@ onUnmounted(() => {
         <HeroBlobsTopRight/>
         <SvgRays />
 
-        <div class="flex flex-col max-sm:px-6 max-md:max-w-md max-md:items-center gap-6 pt-36 md:pt-52 h-full md:mx-16 lg:mx-24 md:border-x md:border-dashed md:border-red-500 relative z-20" :class="space.left.padding" ref="heroContainer">
+        <div class="flex flex-col max-sm:px-6 max-md:max-w-md max-md:items-center gap-6 pt-36 md:pt-52 h-full md:mx-16 lg:mx-24 2xl:mx-48 md:border-x md:border-dashed md:border-red-500 relative z-20" :class="space.left.padding" ref="heroContainer">
             <div class="relative">
                 <h1 class="w-fit p-2 border-2 border-primary-600 font-bold text-4xl md:text-7xl max-md:text-center will-change-auto" ref="h1">Votre <span id="developer-underscore" class="relative after:absolute after:-z-10 after:-mt-1 after:left-1/2 after:-translate-x-1/2 after:block after:h-0.5 md:after:h-1.5 after:bg-accent-yellow">développeur</span> web <br class="max-lg:hidden"> <span id="fullstack" class="text-stroke-1">fullstack</span> de confiance.</h1>
 
@@ -270,10 +322,10 @@ onUnmounted(() => {
             <PrimaryButton>Discutons de votre projet</PrimaryButton>
         </div>
 
-        <div class="bg-[url('/images/noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="bg-[url('/images/landing/pattern/hero-noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
 
-        <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
-        <img loading="lazy" src="images/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">
+        <img loading="lazy" src="images/landing/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
+        <img loading="lazy" src="images/landing/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">
 
         <svg class="absolute -bottom-20 -left-40 md:-bottom-12 md:-left-32 -rotate-[21deg] opacity-20 blur-md max-md:scale-75" width="481" height="463" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M220.86 12.6323C282.557 10.2467 306.345 91.7664 349.44 135.982C391.483 179.116 458.584 204.838 466.41 264.561C474.728 328.03 440.377 394.81 388.222 431.923C340.924 465.579 278.884 441.044 220.86 439.29C165.97 437.631 105.195 457.629 63.32 422.102C19.771 385.155 7.02877 321.125 14.9103 264.561C21.9585 213.979 69.5298 185.095 101.854 145.555C140.983 97.6896 159.083 15.021 220.86 12.6323Z" stroke="#298C65" stroke-width="25"/>
@@ -375,6 +427,17 @@ onUnmounted(() => {
             </template>
 
             <CTACard />
+        </LandingSection>
+
+        <LandingSection id="section-projects">
+            <template #title>
+                Des solutions sur-mesure, réalisées avec précision.
+            </template>
+
+            <ul class="space-y-24">
+                <ProjectCard :project="projects[0]" />
+                <ProjectCard :project="projects[1]" />
+            </ul>
         </LandingSection>
 
         <LandingSection id="section-pricing">

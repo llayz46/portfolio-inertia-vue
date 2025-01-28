@@ -46,7 +46,7 @@ class ProjectController extends Controller
             'url' => $validated['url'],
             'github' => $validated['github'],
             'year' => $validated['year'],
-            'image' => $validated['image']->store('projects')
+            'image' => $validated['image']->storeAs('projects', $validated['slug'], 'public'),
         ])->technologies()->sync($technologies);
     }
 
@@ -59,10 +59,11 @@ class ProjectController extends Controller
             return redirect($project->showRoute());
         }
 
-        return new ProjectResource($project->with('technologies')->first());
-//        return inertia('Project/Show', [
-//            'project' => fn () => new ProjectResource($project)
-//        ]);
+        $project->load('technologies');
+
+        return inertia('Project/Show', [
+            'project' => fn () => ProjectResource::make($project)
+        ]);
     }
 
     /**
