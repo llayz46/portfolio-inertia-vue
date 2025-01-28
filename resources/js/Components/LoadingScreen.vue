@@ -60,7 +60,7 @@ onMounted(() => {
     <div class="relative z-50">
         <div class="blob absolute top-0 z-50 left-1/2 -translate-x-1/2 -translate-y-full w-[720px] h-[170px] bg-primary-700/50 blur-[100px]"></div>
         <div class="blob absolute top-0 z-50 left-1/2 -translate-x-1/2 -translate-y-full w-72 h-12 bg-primary-400/40 blur-[50px]"></div>
-        <div class="blob pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 z-50 w-1/5 h-28 bg-[url('/images/pattern.svg')] bg-[size:90px_90px] opacity-50 mix-blend-plus-lighter [mask-image:radial-gradient(60%_40%_at_50%_0%,black_0%,transparent_80%)]"></div>
+        <div class="blob pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 z-50 w-1/5 h-28 bg-[url('/images/landing/pattern/square-pattern.svg')] bg-[size:90px_90px] opacity-50 mix-blend-plus-lighter [mask-image:radial-gradient(60%_40%_at_50%_0%,black_0%,transparent_80%)]"></div>
 
         <div class="absolute top-0 w-full h-screen z-40 flex flex-col justify-center items-center">
             <svg class="logo z-10" width="47" height="36" viewBox="0 0 47 36" fill="none" xmlns="http://www.w3.org/2000/svg">
