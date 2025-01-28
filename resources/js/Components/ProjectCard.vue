@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 import { ArrowUpRight } from 'lucide-vue-next';
 
 defineProps({
-    project: Array
+    project: Object
 })
 </script>
 
