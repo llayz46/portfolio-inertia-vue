@@ -223,12 +223,12 @@ onMounted(() => {
 
         gsap.fromTo(q('div a'), {
             opacity: 0,
-            translateY: -80,
+            translateY: -30,
         }, {
             opacity: 1,
             translateY: 0,
-            duration: 1,
-            delay: 0.7,
+            duration: 0.7,
+            delay: 0.6,
             scrollTrigger: {
                 trigger: card,
                 start: 'top 65%',
