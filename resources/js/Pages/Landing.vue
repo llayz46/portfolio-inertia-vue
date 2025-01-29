@@ -291,7 +291,24 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Portfolio" />
+    <Head>
+        <title>Louis Mazeau - Développeur web Full-Stack</title>
+        <meta name="author" content="Louis Mazeau">
+        <meta name="description" content="Découvrez le portfolio de Louis Mazeau, développeur web full-stack spécialisé dans la création d'applications modernes et innovantes.">
+        <meta name="keywords" content="Louis Mazeau, llayz, layz, développeur web, développeur front, développeur back, développeur fullstack, portfolio, développement web, Vue.js, Nuxt, PHP, Laravel, Tailwind CSS, intégration web">
+        <meta name="robots" content="index, follow">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Louis Mazeau - Développeur Web Full-Stack">
+        <meta property="og:description" content="Découvrez mon portfolio : projets récents, articles de blog et services en intégration web avec Vue.js et Laravel.">
+        <meta property="og:url" content="https://llayz.fr">
+        <meta property="og:image" content="https://llayz.fr/images/seo/portfolio-seo-image.webp">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Louis Mazeau - Développeur Web Full-Stack">
+        <meta name="twitter:description" content="Découvrez le portfolio de Louis Mazeau, développeur web passionné par les technologies modernes.">
+        <meta name="twitter:image" content="https://llayz.fr/images/seo/portfolio-seo-image.webp">
+    </Head>
 
     <LoadingScreen v-if="loadingScreenAnimate" />
 
