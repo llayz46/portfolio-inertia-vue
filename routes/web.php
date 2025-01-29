@@ -24,5 +24,3 @@ Route::middleware([
     Route::resource('projects', ProjectController::class)->only(['store', 'create']);
     Route::resource('technologies', TechnologyController::class)->only(['store', 'create']);
 });
-
-Route::get('/test', fn () => [new ProjectResource(Project::with('technologies')->first()), new TechnologyResource(Technology::with('projects')->first())]);
