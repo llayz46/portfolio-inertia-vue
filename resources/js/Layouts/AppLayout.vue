@@ -10,13 +10,13 @@ import ResponsiveNavLink from '@/Components/Jetstream/ResponsiveNavLink.vue';
 
 defineProps({
     title: String,
-});
+})
 
-const showingNavigationDropdown = ref(false);
+const showingNavigationDropdown = ref(false)
 
 const logout = () => {
-    router.post(route('logout'));
-};
+    router.post(route('logout'))
+}
 </script>
 
 <template>
