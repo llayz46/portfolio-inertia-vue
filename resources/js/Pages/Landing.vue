@@ -14,6 +14,7 @@ import FAQAccordion from "@/Components/FAQAccordion.vue";
 import Footer from "@/Components/Footer.vue";
 import Navbar from "@/Components/Navbar.vue";
 import ProjectCard from "@/Components/ProjectCard.vue";
+import LandingLightEffect from "@/Components/LandingLightEffect.vue";
 
 defineProps({
     projects: Array
@@ -341,8 +342,8 @@ onUnmounted(() => {
 
         <div class="bg-[url('/images/landing/pattern/hero-noise-pattern.webp')] absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
 
-        <img loading="lazy" src="images/landing/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -right-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none" aria-hidden="true" alt="Light effect on the background">
-        <img loading="lazy" src="images/landing/light-effect.svg" width="530px" height="535px" class="absolute -bottom-32 -left-40 w-[530px] h-[535px] mix-blend-hard-light opacity-30 pointer-events-none select-none transform scale-x-[-1]" aria-hidden="true" alt="Light effect on the background">
+        <LandingLightEffect class="-right-40" />
+        <LandingLightEffect class="-left-40 transform scale-x-[-1]" />
 
         <svg class="absolute -bottom-20 -left-40 md:-bottom-12 md:-left-32 -rotate-[21deg] opacity-20 blur-md max-md:scale-75" width="481" height="463" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M220.86 12.6323C282.557 10.2467 306.345 91.7664 349.44 135.982C391.483 179.116 458.584 204.838 466.41 264.561C474.728 328.03 440.377 394.81 388.222 431.923C340.924 465.579 278.884 441.044 220.86 439.29C165.97 437.631 105.195 457.629 63.32 422.102C19.771 385.155 7.02877 321.125 14.9103 264.561C21.9585 213.979 69.5298 185.095 101.854 145.555C140.983 97.6896 159.083 15.021 220.86 12.6323Z" stroke="#298C65" stroke-width="25"/>
