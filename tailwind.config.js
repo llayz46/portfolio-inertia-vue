@@ -1,8 +1,8 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-
-const animate = require("tailwindcss-animate")
+import animate from "tailwindcss-animate";
+import { setupInspiraUI } from "@inspira-ui/plugins";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -87,6 +87,7 @@ module.exports = {
     plugins: [
         forms,
         typography,
-        animate
+        animate,
+        setupInspiraUI
     ],
 }
