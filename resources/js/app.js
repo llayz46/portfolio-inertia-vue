@@ -1,6 +1,11 @@
 import './bootstrap';
 import '../css/app.css';
 
+import.meta.glob([
+    // '../images/**',
+    '../fonts/**',
+]);
+
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createInertiaApp } from '@inertiajs/vue3'
 import { createSSRApp, h } from 'vue'
