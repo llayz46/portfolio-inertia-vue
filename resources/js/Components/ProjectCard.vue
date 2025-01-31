@@ -9,7 +9,7 @@ defineProps({
 
 <template>
     <li class="project-card">
-        <img :src="project.image" class="relative z-10 rounded-xl sm:rounded-3xl" :alt="`Image du projet : ${project.name}`">
+        <img :src="project.image" class="relative z-10 rounded-xl sm:rounded-3xl" width="896" height="538" :alt="`Image du projet : ${project.name}`">
 
         <div class="mt-4">
             <Link :only="['project']" :href="project.routes.show" class="flex items-center gap-2 group">

@@ -11,7 +11,6 @@ import DialogModal from "@/Components/Jetstream/DialogModal.vue";
 import { X } from 'lucide-vue-next';
 
 const showTechnologyModal = ref(false);
-const createTechnologyInput = ref(null);
 
 const props = defineProps({
     technologies: Array,
