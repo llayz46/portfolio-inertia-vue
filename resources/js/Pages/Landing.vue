@@ -390,7 +390,7 @@ onUnmounted(() => {
             </template>
 
             <div class="flex flex-col justify-center items-center gap-14 mx-auto max-w-[796px] w-full h-auto relative">
-                <WorkflowStepLine step="1" image="analyse-et-conception.webp" imageAlt="Etape 1 : Analyse et conception">
+                <WorkflowStepLine step="1" image="analyse-et-conception" imageAlt="Etape 1 : Analyse et conception">
                     <template #title>
                         Analyse et conception
                     </template>
@@ -399,7 +399,7 @@ onUnmounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement.webp" imageAlt="Etape 2 : Développement">
+                <WorkflowStepLine class="flex-row-reverse" step="2" image="developpement" imageAlt="Etape 2 : Développement">
                     <template #title>
                         Développement
                     </template>
@@ -408,7 +408,7 @@ onUnmounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="3" image="performance.webp" imageAlt="Etape 3 : Optimisation et sécurité">
+                <WorkflowStepLine step="3" image="optimisation" imageAlt="Etape 3 : Optimisation et sécurité">
                     <template #title>
                         Optimisation et sécurité
                     </template>
@@ -417,7 +417,7 @@ onUnmounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine class="flex-row-reverse" step="4" image="deploiement.webp" imageAlt="Etape 4 : Livraison et déploiement">
+                <WorkflowStepLine class="flex-row-reverse" step="4" image="deploiement" imageAlt="Etape 4 : Livraison et déploiement">
                     <template #title>
                         Livraison et déploiement
                     </template>
@@ -426,7 +426,7 @@ onUnmounted(() => {
                     </template>
                 </WorkflowStepLine>
 
-                <WorkflowStepLine step="5" image="maintenance-et-evolution.webp" imageAlt="Etape 5 : Maintenance et évolution">
+                <WorkflowStepLine step="5" image="maintenance-et-evolution" imageAlt="Etape 5 : Maintenance et évolution">
                     <template #title>
                         Maintenance et évolution
                     </template>

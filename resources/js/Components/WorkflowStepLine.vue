@@ -11,7 +11,7 @@ defineProps({
 <template>
     <div class="flex justify-center items-center gap-[20%] sm:gap-[10%] md:gap-44 workflow-step-line">
         <div class="flex justify-start items-center w-full rounded-lg relative z-20">
-            <img loading="lazy" width="310" height="175" :src="'images/workflow/' + image" class="rounded-lg aspect-video" aria-hidden="true" :alt="'Workflow image step : ' + imageAlt">
+            <img loading="lazy" width="310" height="175" :src="'images/workflow/' + image + '.webp'" class="rounded-lg aspect-video" aria-hidden="true" :alt="'Workflow image step : ' + imageAlt">
 
             <span class="absolute -z-10 rounded-full blur-2xl size-8 md:size-14" :class="`top-step-${step}`" aria-hidden="true"></span>
             <span class="absolute -z-10 rounded-full blur-2xl size-8 md:size-14" :class="`bottom-step-${step}`" aria-hidden="true"></span>
