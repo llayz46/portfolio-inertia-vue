@@ -29,6 +29,6 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        color: '#4B5563', // TODO : Change this progress bar global color
+        color: '#0F2534',
     },
 })
