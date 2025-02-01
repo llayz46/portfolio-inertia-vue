@@ -12,6 +12,12 @@ module.exports = {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.{js,jsx,vue}",
     ],
+    safelist: [
+        'bg-feature-1',
+        'bg-feature-2',
+        'bg-feature-3',
+        'bg-feature-4',
+    ],
 
     theme: {
         extend: {
@@ -79,6 +85,12 @@ module.exports = {
                 "accordion-up": "accordion-up 0.2s ease-out",
                 "blob-scale": "blob-scale 3s linear infinite",
             },
+            backgroundImage: {
+                'feature-1': "url('/images/feature/feature-1.webp')",
+                'feature-2': "url('/images/feature/feature-2.webp')",
+                'feature-3': "url('/images/feature/feature-3.webp')",
+                'feature-4': "url('/images/feature/feature-4.webp')",
+            }
         },
         letterSpacing: {
             'small': '-.045em'

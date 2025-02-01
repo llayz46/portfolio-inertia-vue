@@ -119,7 +119,7 @@ onMounted(() => {
     })
 
     gsap.matchMedia().add('(max-width: 768px)', () => {
-        gsap.fromTo('.card-1, .card-3', {
+        gsap.fromTo('.gradient-1, .gradient-3', {
             opacity: 0,
             translateY: 50
         }, {
@@ -132,7 +132,7 @@ onMounted(() => {
             }
         })
 
-        gsap.fromTo('.card-2, .card-4', {
+        gsap.fromTo('.gradient-2, .gradient-4', {
             opacity: 0,
             translateY: 50
         }, {
@@ -147,7 +147,7 @@ onMounted(() => {
     })
 
     gsap.matchMedia().add('(min-width: 768px)', () => {
-        gsap.fromTo('.card-1, .card-3', {
+        gsap.fromTo('.gradient-1, .gradient-3', {
             opacity: 0,
             translateX: -50
         }, {
@@ -160,7 +160,7 @@ onMounted(() => {
             }
         })
 
-        gsap.fromTo('.card-2, .card-4', {
+        gsap.fromTo('.gradient-2, .gradient-4', {
             opacity: 0,
             translateX: 50
         }, {
@@ -364,22 +364,22 @@ onUnmounted(() => {
 
             <div class="space-y-3">
                 <div class="flex max-lg:flex-col gap-3">
-                    <FeatureCard title="Interfaces modernes et performantes" description="Je conçois des interfaces modernes, fluides et responsives." width="large" gradient="card-1"></FeatureCard>
-                    <FeatureCard class="max-lg:hidden" title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
+                    <FeatureCard title="Interfaces modernes et performantes" description="Je conçois des interfaces modernes, fluides et responsives." width="large" number="1"></FeatureCard>
+                    <FeatureCard class="max-lg:hidden" title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" number="2"></FeatureCard>
 
                     <div class="space-y-3 lg:hidden">
                         <div class="flex max-sm:flex-col gap-3">
-                            <FeatureCard title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" gradient="card-2"></FeatureCard>
-                            <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
+                            <FeatureCard title="Maintenance et support" description="Un accompagnement à chaque étape." width="small" number="2"></FeatureCard>
+                            <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" number="3"></FeatureCard>
                         </div>
 
-                        <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
+                        <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" number="4"></FeatureCard>
                     </div>
                 </div>
 
                 <div class="hidden lg:flex gap-3">
-                    <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" gradient="card-3"></FeatureCard>
-                    <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" gradient="card-4"></FeatureCard>
+                    <FeatureCard title="Sécurité et performance" description="Des solutions web rapides et sécurisées." width="small" number="3"></FeatureCard>
+                    <FeatureCard title="Des fondations solides pour vos projets" description="Un code propre et structuré pour une évolutivité maximale avec Laravel." width="large" number="4"></FeatureCard>
                 </div>
             </div>
         </LandingSection>
