@@ -22,5 +22,5 @@ Route::middleware([
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::resource('projects', ProjectController::class)->only(['store', 'create']);
-    Route::resource('technologies', TechnologyController::class)->only(['store', 'create']);
+    Route::resource('technologies', TechnologyController::class)->only(['store', 'create', 'destroy']);
 });
