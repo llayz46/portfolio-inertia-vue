@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Motion } from "motion-v";
-import { defineProps, onMounted, onUnmounted, ref, withDefaults } from "vue";
+import { onMounted, onUnmounted, ref, withDefaults } from "vue";
 
 interface Sparkle {
     id: string;
