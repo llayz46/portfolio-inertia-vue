@@ -35,7 +35,15 @@ defineProps({
                         <ul role="list" class="pt-4 divide-y divide-zinc-1000">
                             <li v-for="technology in technologies" :key="technology.id" class="flex items-center px-4 py-4 sm:px-0">
                                 {{ technology.id }}.
-                                <img :src="technology.icon" class="ml-1.5 mr-2 size-4" alt="">
+
+                                <template v-if="technology.icon.startsWith('http')">
+                                    <img :src="technology.icon" class="ml-1.5 mr-2 size-4" alt="">
+                                </template>
+
+                                <template v-else>
+                                    <div class="[&>svg]:ml-1.5 [&>svg]:mr-2 [&>svg]:size-4" v-html="technology.icon"></div>
+                                </template>
+
                                 {{ technology.name }}
                             </li>
                         </ul>

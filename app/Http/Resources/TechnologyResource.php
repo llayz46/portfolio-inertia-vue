@@ -13,7 +13,7 @@ class TechnologyResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'icon' => Str::startsWith($this->icon, 'http') ? $this->icon : 'https://api.svgl.app?search='.$this->icon,
+            'icon' => $this->icon,
             'projects' => ProjectResource::collection($this->whenLoaded('projects')),
         ];
     }
