@@ -48,6 +48,8 @@ class ProjectController extends Controller
             'year' => $validated['year'],
             'image' => $validated['image']->storeAs('projects', $validated['slug'], 'public'),
         ])->technologies()->sync($technologies);
+
+        return redirect()->route('projects.create')->banner('Projet créer avec succès.');
     }
 
     /**
