@@ -21,6 +21,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    Route::resource('projects', ProjectController::class)->only(['store', 'create']);
+    Route::get('projects/{project}/{slug}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::resource('projects', ProjectController::class)->only(['store', 'create', 'update']);
     Route::resource('technologies', TechnologyController::class)->only(['store', 'create', 'destroy']);
 });

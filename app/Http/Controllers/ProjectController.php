@@ -8,6 +8,7 @@ use App\Http\Resources\TechnologyResource;
 use App\Models\Project;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -73,7 +74,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $project->load('technologies');
+
+        return inertia('Project/Edit', [
+            'project' => fn () => ProjectResource::make($project),
+            'technologies' => fn () => TechnologyResource::collection(Technology::all())
+        ]);
     }
 
     /**
@@ -81,7 +87,41 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'slug' => ['required', 'string'],
+            'url' => ['required', 'url'],
+            'github' => ['nullable', 'url'],
+            'year' => ['required', 'integer'],
+            'image' => ['nullable', 'image'],
+            'technologies' => ['required', 'array'],
+            'technologies.*.id' => ['required', 'integer', 'exists:technologies,id'],
+        ]);
+
+        $technologies = collect($validated['technologies'])->map(fn ($technology) => $technology['id']);
+
+        if ($validated['image'] && Storage::disk('public')->exists($project->image)) {
+            Storage::disk('public')->delete($project->image);
+        }
+
+        $imagePath = $validated['image']
+            ? $validated['image']->storeAs('projects', $validated['slug'], 'public')
+            : $project->image;
+
+        $project->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'slug' => Str::slug($validated['slug']),
+            'url' => $validated['url'],
+            'github' => $validated['github'],
+            'year' => $validated['year'],
+            'image' => $imagePath,
+        ]);
+
+        $project->technologies()->sync($technologies);
+
+        return redirect()->route('projects.edit', ['project' => $project, 'slug' => $project->slug])->banner('Projet mis à jour avec succès.');
     }
 
     /**

@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { X } from 'lucide-vue-next';
-import {router} from "@inertiajs/vue3";
+import { router, Link } from "@inertiajs/vue3";
 
 defineProps({
     projects: Array,
@@ -32,8 +32,10 @@ const deleteTechnology = (id) => {
 
                         <ul role="list" class="pt-4 divide-y divide-zinc-1000">
                             <li v-for="project in projects" :key="project.id" class="px-4 py-4 sm:px-0">
-                                <p>{{ project.name }}</p>
-                                <p class="text-sm pt-2 text-gray-400">{{ project.description }}</p>
+                                <Link :href="route('projects.edit', { project: project.id, slug: project.slug })">
+                                    <p>{{ project.name }}</p>
+                                    <p class="text-sm pt-2 text-gray-400">{{ project.description }}</p>
+                                </Link>
                             </li>
                         </ul>
                     </div>
