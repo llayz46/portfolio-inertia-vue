@@ -10,7 +10,7 @@ class ProjectRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'description' => ['required', 'string', 'min:20', 'max:500'],
+            'description' => ['required', 'string', 'min:20', 'max:5000'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
             'slug' => ['required', 'string', 'unique:projects'],
             'url' => ['required', 'url'],
