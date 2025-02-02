@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('technologies', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('icon', 2000);
+            $table->longText('icon');
             $table->timestamps();
         });
     }
