@@ -1,5 +1,5 @@
 <script setup>
-
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -11,9 +11,9 @@
                 <p>2024 llayz</p>
 
                 <div class="flex gap-5">
-                    <p>Page 1</p>
-                    <p>Page 2</p>
-                    <p>Page 3</p>
+                    <Link>Contact</Link>
+                    <Link>Projet</Link>
+                    <Link>Tarif</Link>
                 </div>
             </div>
         </div>

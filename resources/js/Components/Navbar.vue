@@ -64,7 +64,7 @@ onMounted(() => {
                 <nav class="pl-4 sm:pl-20 md:pl-44 flex gap-1 sm:px-6 font-dm-sans text-xs sm:text-sm font-medium">
                     <a href="#section-cta" class="my-auto px-2">Contact</a>
                     <a href="#section-projects" class="my-auto px-2">Projets</a>
-                    <a href="#section-pricing" class="my-auto px-2">Prix</a>
+                    <a href="#section-pricing" class="my-auto px-2">Tarifs</a>
                 </nav>
 
                 <SecondaryButton class="max-[350px]:hidden">Me contacter</SecondaryButton>

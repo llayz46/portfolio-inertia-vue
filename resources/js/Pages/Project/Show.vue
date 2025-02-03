@@ -57,7 +57,7 @@ onMounted(() => {
 <template>
     <ProjectLayout :title="project.name">
         <div class="relative z-20 md:max-w-3xl lg:max-w-5xl xl:max-w-7xl px-3 md:px-8 mx-auto">
-            <article class="pt-24 pb-32 flex flex-col gap-8 md:gap-16 items-center w-full">
+            <article class="pt-24 pb-20 sm:pb-32 flex flex-col gap-8 md:gap-16 items-center w-full">
                 <div class="title-div flex flex-col items-center gap-4">
                     <span class="text-xs md:text-sm text-neutral-400 uppercase tracking-small">Projet</span>
 
@@ -117,11 +117,19 @@ onMounted(() => {
                     text="Contactez-moi"
                     :colors="{ first: '#8E3BB4', second: '#F6C31B' }"
                     :sparkles-count="10"
-                    class="my-8 text-3xl md:text-5xl font-semibold text-center"
+                    class="my-4 sm:my-8 max-sm:text-2xl sm:text-3xl md:text-5xl font-semibold text-center"
                 />
 
-                <div class="max-w-2xl mx-auto pattern aspect-[16/5] w-full rounded-3xl">
+                <div class="sm:grid sm:grid-cols-3 items-center max-w-3xl mx-auto p-6 pattern w-full rounded-xl sm:rounded-3xl">
+                    <div class="flex flex-col sm:col-span-2">
+                        <h3 class="text-2xl sm:text-3xl leading-none">Un projet ?</h3>
+                        <p class="mt-4 mb-6 text-xs sm:text-sm text-white/60">Un projet en tête ou une question ? Je suis disponible pour échanger et découvrir de nouvelles opportunités !</p>
+                        <SecondaryButton class="w-fit">Contactez moi</SecondaryButton>
+                    </div>
 
+                    <svg class="hidden sm:block mx-auto size-16 fill-white/85" width="128" height="128" viewBox="0 0 128 128" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 24C0 10.7452 10.7452 0 24 0H104C117.255 0 128 10.7452 128 24V104C128 117.255 117.255 128 104 128H24C10.7452 128 0 117.255 0 104V24ZM80.9908 24.9999H67.4648C65.9085 24.9999 64.4691 25.8233 63.6931 27.1571L18.9966 103.913H32.5529C34.092 103.913 35.5139 103.103 36.2813 101.782L80.9908 24.9999ZM103.708 103.913H60.5587H47.0024L91.6989 27.1571C92.4749 25.8233 93.9142 24.9999 95.4706 24.9999H108.997L70.6902 90.7852L103.716 91.0297C104.813 91.0383 105.702 91.9218 105.702 93.0111V101.94C105.702 103.03 104.809 103.913 103.708 103.913Z"/>
+                    </svg>
                 </div>
             </div>
         </div>
