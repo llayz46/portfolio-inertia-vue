@@ -13,7 +13,7 @@ defineProps({
 
         <div class="mt-4">
             <Link :only="['project']" :href="project.routes.show" class="flex items-center gap-2 group">
-                <h4 class="text-base md:text-xl">{{ project.name }}</h4>
+                <h3 class="text-base md:text-xl">{{ project.name }}</h3>
 
                 <ArrowUpRight class="w-4 h-6 text-white/50 group-hover:rotate-45 transition-transform duration-300" />
             </Link>
