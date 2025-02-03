@@ -77,9 +77,5 @@ class DatabaseSeeder extends Seeder
                 'icon' => $tech['icon'],
             ]);
         }
-
-        Project::factory(15)->create()->each(function ($project) {
-            $project->technologies()->attach(Technology::all()->random(3));
-        });
     }
 }

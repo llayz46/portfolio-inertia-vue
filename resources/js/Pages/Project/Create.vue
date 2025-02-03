@@ -61,6 +61,7 @@ const filteredTechnologies = computed(() => props.technologies.filter(t => !tech
                                 <TextInput
                                     id="name"
                                     v-model="form.name"
+                                    @input="form.slug = $event.target.value.toLowerCase().replace(/[^a-z0-9]/g, '-')"
                                     type="text"
                                     class="mt-1 block w-full"
                                     required
