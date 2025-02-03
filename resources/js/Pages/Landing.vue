@@ -453,8 +453,9 @@ onUnmounted(() => {
             </template>
 
             <ul class="space-y-24">
-                <ProjectCard :project="projects[0]" />
-                <ProjectCard :project="projects[1]" />
+                <template v-for="project in projects" :key="project.id">
+                    <ProjectCard :project="project" />
+                </template>
             </ul>
         </LandingSection>
 
