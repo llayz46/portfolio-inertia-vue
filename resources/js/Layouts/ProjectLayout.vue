@@ -3,12 +3,30 @@ import {Head} from '@inertiajs/vue3';
 import Footer from "@/Components/Footer.vue";
 
 defineProps({
-    title: String,
+    project: Object,
 })
 </script>
 
 <template>
-    <Head :title="title"/>
+    <Head>
+        <title>{{ project.name }}</title>
+        <meta name="author" content="Louis Mazeau">
+        <meta name="description" :content="`Découvrez ${project.name}, un projet développé par Louis Mazeau.`">
+        <meta name="keywords" :content="`Louis Mazeau, projet, portfolio, ${project.name}, ${project.technologies.map(tech => tech.name).join(', ')}, développement web`">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" :href="`https://llayz.fr/projects/${project.id}/${project.slug}`">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" :content="`${project.name} - Portfolio de Louis Mazeau`">
+        <meta property="og:description" :content="`Découvrez ${project.name}, un projet développé par Louis Mazeau.`">
+        <meta property="og:url" :content="`https://llayz.fr/projects/${project.id}/${project.slug}`">
+        <meta property="og:image" content="https://llayz.fr/images/seo/portfolio-seo-image.webp">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="`${project.name} - Portfolio de Louis Mazeau`">
+        <meta name="twitter:description" :content="`Découvrez ${project.name}, un projet développé par Louis Mazeau.`">
+        <meta name="twitter:image" content="https://llayz.fr/images/seo/portfolio-seo-image.webp">
+    </Head>
 
     <main class="relative bg-background pb-20">
         <slot/>

@@ -54,7 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <ProjectLayout :title="project.name">
+    <ProjectLayout :project="project">
         <div class="relative z-20 md:max-w-3xl lg:max-w-5xl xl:max-w-7xl px-3 md:px-8 mx-auto">
             <article class="pt-24 pb-20 sm:pb-32 flex flex-col gap-8 md:gap-16 items-center w-full">
                 <div class="title-div flex flex-col items-center gap-4">

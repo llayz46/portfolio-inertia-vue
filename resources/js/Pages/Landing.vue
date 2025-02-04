@@ -293,7 +293,7 @@ onUnmounted(() => {
 
 <template>
     <Head>
-        <title>Louis Mazeau - Développeur web Full-Stack</title>
+        <title>Développeur web Full-Stack</title>
         <meta name="author" content="Louis Mazeau">
         <meta name="description" content="Découvrez le portfolio de Louis Mazeau, développeur web full-stack spécialisé dans la création d'applications modernes et innovantes.">
         <meta name="keywords" content="Louis Mazeau, llayz, layz, développeur web, développeur front, développeur back, développeur fullstack, portfolio, développement web, Vue.js, Nuxt, PHP, Laravel, Tailwind CSS, intégration web">
