@@ -316,6 +316,8 @@ onUnmounted(() => {
     <Navbar />
 
     <section class="relative h-screen max-md:flex max-md:justify-center w-full overflow-hidden bg-accent-green-darker" ref="heroSection">
+        <div class="max-sm:hidden absolute -top-4 left-1/2 -translate-x-1/2 w-[600px] h-[70px] mix-blend-hard-light bg-[radial-gradient(50%_90%_at_50%_0%,#91CCE880_5%,transparent_75%)] pointer-events-none select-none blur-lg" aria-hidden="true"></div>
+
         <HeroBlobsTopRight/>
         <SvgRays />
 
