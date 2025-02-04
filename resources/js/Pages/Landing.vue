@@ -57,7 +57,7 @@ const space = ref({
 })
 
 onMounted(() => {
-    loadingScreenAnimate.value = sessionStorage.getItem('loadingScreenComplete')
+    loadingScreenAnimate.value = !sessionStorage.getItem('loadingScreenComplete')
     animationDelay.value = loadingScreenAnimate.value ? 5 : 0;
 
     calculateSpace()
