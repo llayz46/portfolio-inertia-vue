@@ -1,7 +1,6 @@
 <script setup>
 import ProjectLayout from '@/Layouts/ProjectLayout.vue';
 import TechnologyTag from "@/Components/TechnologyTag.vue";
-import {Link} from "@inertiajs/vue3";
 import {ArrowUpRight} from "lucide-vue-next";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {inject, onMounted} from "vue";
@@ -88,17 +87,17 @@ onMounted(() => {
                         </div>
 
                         <div class="flex items-center justify-between">
-                            <Link v-if="project.github" :href="project.github" class="flex items-center gap-2 group">
+                            <a v-if="project.github" target="_blank" :href="project.github" class="flex items-center gap-2 group">
                                 <h4 class="text-base text-neutral-400">GitHub</h4>
 
                                 <ArrowUpRight class="w-4 h-6 text-white/50 group-hover:rotate-45 transition-transform duration-300" />
-                            </Link>
+                            </a>
 
-                            <Link :href="project.url">
+                            <a :href="project.url" target="_blank">
                                 <SecondaryButton>
                                     Lien vers le projet
                                 </SecondaryButton>
-                            </Link>
+                            </a>
                         </div>
                     </div>
 
