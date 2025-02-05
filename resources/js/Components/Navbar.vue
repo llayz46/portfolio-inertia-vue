@@ -4,14 +4,8 @@ import { Link } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const gsap = inject('gsap')
-// let trigger
 
 onMounted(() => {
-    // const navbar = document.getElementById('navbar')
-    // const navbarLinks = document.getElementById('navbar-links')
-
-    // if (!navbar || !navbarLinks) return
-
     gsap.set("#navbar", { y: -75 })
     gsap.set("#navbar-links", { opacity: 0, width: 0 })
 
@@ -53,12 +47,6 @@ onMounted(() => {
         },
     })
 })
-
-// onUnmounted(() => {
-//     if (trigger?.scrollTrigger) {
-//         trigger.scrollTrigger.kill()
-//     }
-// })
 </script>
 
 <template>
