@@ -4,7 +4,9 @@ import TechnologyTag from "@/Components/TechnologyTag.vue";
 import {ArrowUpRight} from "lucide-vue-next";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {inject, onMounted} from "vue";
+import { Link } from '@inertiajs/vue3';
 import SparklesText from "@/Components/InpiraUI/SparklesText.vue";
+import Navbar from "@/Components/Navbar.vue";
 
 const gsap = inject('gsap')
 
@@ -55,6 +57,8 @@ onMounted(() => {
 
 <template>
     <ProjectLayout :project="project">
+
+        <Navbar />
         <div class="relative z-20 md:max-w-3xl lg:max-w-5xl xl:max-w-7xl px-3 md:px-8 mx-auto">
             <article class="pt-24 pb-20 sm:pb-32 flex flex-col gap-8 md:gap-16 items-center w-full">
                 <div class="title-div flex flex-col items-center gap-4">
@@ -122,8 +126,12 @@ onMounted(() => {
                 <div class="sm:grid sm:grid-cols-3 items-center max-w-3xl mx-auto p-6 pattern w-full rounded-xl sm:rounded-3xl">
                     <div class="flex flex-col sm:col-span-2">
                         <h3 class="text-2xl sm:text-3xl leading-none">Un projet ?</h3>
+
                         <p class="mt-4 mb-6 text-xs sm:text-sm text-white/60">Un projet en tête ou une question ? Je suis disponible pour échanger et découvrir de nouvelles opportunités !</p>
-                        <SecondaryButton class="w-fit">Contactez moi</SecondaryButton>
+
+                        <Link :href="route('contact.index')">
+                            <SecondaryButton class="w-fit">Contactez moi</SecondaryButton>
+                        </Link>
                     </div>
 
                     <svg class="hidden sm:block mx-auto size-16 fill-white/85" width="128" height="128" viewBox="0 0 128 128" fill="none">
