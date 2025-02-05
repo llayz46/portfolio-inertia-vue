@@ -98,6 +98,6 @@ const submit = () => {
             </section>
         </main>
 
-<!--        <Footer />-->
+        <Footer />
     </div>
 </template>
