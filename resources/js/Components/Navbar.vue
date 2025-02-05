@@ -1,58 +1,58 @@
 <script setup>
-import {inject, onMounted, onUnmounted} from "vue";
+import {inject, onMounted} from "vue";
 import { Link } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
-// const gsap = inject('gsap')
+const gsap = inject('gsap')
 // let trigger
 
-// onMounted(() => {
+onMounted(() => {
     // const navbar = document.getElementById('navbar')
     // const navbarLinks = document.getElementById('navbar-links')
 
     // if (!navbar || !navbarLinks) return
 
-//     gsap.set("#navbar", { y: -75 })
-//     gsap.set("#navbar-links", { opacity: 0, width: 0 })
-//
-//     gsap.to("#navbar", {
-//         scrollTrigger: {
-//             trigger: "body",
-//             start: "+90 top",
-//             end: "+90 bottom",
-//             onEnter: () => {
-//                 gsap.to("#navbar", {
-//                     y: 0,
-//                     duration: 0.4,
-//                     ease: 'power1.out',
-//                     onComplete: () => {
-//                         gsap.to("#navbar-links", {
-//                             opacity: 1,
-//                             width: 'auto',
-//                             duration: 1.2,
-//                             ease: "power3.out",
-//                         })
-//                     }
-//                 })
-//             },
-//             onLeaveBack: () => {
-//                 gsap.to("#navbar-links", {
-//                     opacity: 0,
-//                     width: 0,
-//                     duration: 1,
-//                     ease: "power3.in",
-//                     onComplete: () => {
-//                         gsap.to("#navbar", {
-//                             y: -75,
-//                             duration: 0.4,
-//                             ease: 'power2.out',
-//                         })
-//                     }
-//                 })
-//             }
-//         },
-//     })
-// })
+    gsap.set("#navbar", { y: -75 })
+    gsap.set("#navbar-links", { opacity: 0, width: 0 })
+
+    gsap.to("#navbar", {
+        scrollTrigger: {
+            trigger: "body",
+            start: "+90 top",
+            end: "+90 bottom",
+            onEnter: () => {
+                gsap.to("#navbar", {
+                    y: 0,
+                    duration: 0.4,
+                    ease: 'power1.out',
+                    onComplete: () => {
+                        gsap.to("#navbar-links", {
+                            opacity: 1,
+                            width: 'auto',
+                            duration: 1.2,
+                            ease: "power3.out",
+                        })
+                    }
+                })
+            },
+            onLeaveBack: () => {
+                gsap.to("#navbar-links", {
+                    opacity: 0,
+                    width: 0,
+                    duration: 1,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        gsap.to("#navbar", {
+                            y: -75,
+                            duration: 0.4,
+                            ease: 'power2.out',
+                        })
+                    }
+                })
+            }
+        },
+    })
+})
 
 // onUnmounted(() => {
 //     if (trigger?.scrollTrigger) {
