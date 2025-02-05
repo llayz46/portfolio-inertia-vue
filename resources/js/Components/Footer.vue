@@ -11,7 +11,7 @@ import { Link } from '@inertiajs/vue3';
                 <p>2024 llayz</p>
 
                 <div class="flex gap-5">
-                    <Link href="/#section-cta">Contact</Link>
+                    <Link :href="route('contact.index')">Contact</Link>
                     <Link href="/#section-projects">Projet</Link>
                     <Link href="/#section-pricing">Tarif</Link>
                 </div>

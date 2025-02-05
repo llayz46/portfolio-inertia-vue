@@ -113,4 +113,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'contact@llayz.fr'),
+        'name' => env('MAIL_TO_NAME', 'Llayz'),
+    ],
 ];

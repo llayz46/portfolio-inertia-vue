@@ -1,6 +1,7 @@
 <script setup>
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {computed} from "vue";
+import {Link} from "@inertiajs/vue3";
 
 const props = defineProps({
     plan: String,
@@ -97,7 +98,9 @@ const plan = computed(() => {
                     </div>
                 </div>
 
-                <SecondaryButton class="w-full mt-auto">En savoir plus</SecondaryButton>
+                <Link :href="route('contact.index')">
+                    <SecondaryButton class="w-full mt-auto">En savoir plus</SecondaryButton>
+                </Link>
             </div>
 
             <span class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2"

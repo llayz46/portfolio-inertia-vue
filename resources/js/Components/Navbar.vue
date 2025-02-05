@@ -1,51 +1,63 @@
 <script setup>
-import {inject, onMounted} from "vue";
+import {inject, onMounted, onUnmounted} from "vue";
+import { Link } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import { Link } from "@inertiajs/vue3"
 
 const gsap = inject('gsap')
+let trigger
 
 onMounted(() => {
-    gsap.set("#navbar", { y: -75 })
-    gsap.set("#navbar-links", { opacity: 0, width: 0 })
+    const navbar = document.getElementById('navbar')
+    const navbarLinks = document.getElementById('navbar-links')
 
-    gsap.to("#navbar", {
-        scrollTrigger: {
-            trigger: "body",
-            start: "+90 top",
-            end: "+90 bottom",
-            onEnter: () => {
-                gsap.to("#navbar", {
-                    y: 0,
-                    duration: 0.4,
-                    ease: 'power1.out',
-                    onComplete: () => {
-                        gsap.to("#navbar-links", {
-                            opacity: 1,
-                            width: 'auto',
-                            duration: 1.2,
-                            ease: "power3.out",
-                        })
-                    }
-                })
+    if(navbar && navbarLinks) {
+        gsap.set("#navbar", { y: -75 })
+        gsap.set("#navbar-links", { opacity: 0, width: 0 })
+
+        trigger = gsap.to("#navbar", {
+            scrollTrigger: {
+                trigger: "body",
+                start: "+90 top",
+                end: "+90 bottom",
+                onEnter: () => {
+                    gsap.to("#navbar", {
+                        y: 0,
+                        duration: 0.4,
+                        ease: 'power1.out',
+                        onComplete: () => {
+                            gsap.to("#navbar-links", {
+                                opacity: 1,
+                                width: 'auto',
+                                duration: 1.2,
+                                ease: "power3.out",
+                            })
+                        }
+                    })
+                },
+                onLeaveBack: () => {
+                    gsap.to("#navbar-links", {
+                        opacity: 0,
+                        width: 0,
+                        duration: 1,
+                        ease: "power3.in",
+                        onComplete: () => {
+                            gsap.to("#navbar", {
+                                y: -75,
+                                duration: 0.4,
+                                ease: 'power2.out',
+                            })
+                        }
+                    })
+                }
             },
-            onLeaveBack: () => {
-                gsap.to("#navbar-links", {
-                    opacity: 0,
-                    width: 0,
-                    duration: 1,
-                    ease: "power3.in",
-                    onComplete: () => {
-                        gsap.to("#navbar", {
-                            y: -75,
-                            duration: 0.4,
-                            ease: 'power2.out',
-                        })
-                    }
-                })
-            }
-        },
-    })
+        })
+    }
+})
+
+onUnmounted(() => {
+    if (trigger) {
+        trigger.scrollTrigger.kill()
+    }
 })
 </script>
 
@@ -62,12 +74,14 @@ onMounted(() => {
 
             <div id="navbar-links" class="flex gap-4 sm:gap-20 md:gap-44">
                 <nav class="pl-4 sm:pl-20 md:pl-44 flex gap-1 sm:px-6 font-dm-sans text-xs sm:text-sm font-medium">
-                    <a href="#section-cta" class="my-auto px-2">Contact</a>
+                    <Link :href="route('contact.index')" class="my-auto px-2">Contact</Link>
                     <a href="#section-projects" class="my-auto px-2">Projets</a>
                     <a href="#section-pricing" class="my-auto px-2">Tarifs</a>
                 </nav>
 
-                <SecondaryButton class="max-[350px]:hidden">Me contacter</SecondaryButton>
+                <Link :href="route('contact.index')">
+                    <SecondaryButton class="max-[350px]:hidden">Me contacter</SecondaryButton>
+                </Link>
             </div>
         </div>
     </header>

@@ -1,6 +1,7 @@
 <script setup>
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
+import {Link} from "@inertiajs/vue3";
 </script>
 
 <template>
@@ -10,7 +11,10 @@ import { ArrowRight, Rocket, Sparkles, Gauge, Hammer } from 'lucide-vue-next';
                 <h3 class="text-2xl md:text-4xl font-medium tracking-small text-gradient-white bg-clip-text text-transparent">Un site performant pour booster votre activité.</h3>
 
                 <div class="hidden md:flex items-center gap-8">
-                    <PrimaryButton>Contactez-moi</PrimaryButton>
+                    <Link :href="route('contact.index')">
+                        <PrimaryButton>Contactez-moi</PrimaryButton>
+                    </Link>
+
                     <button class="flex items-center gap-1 font-dm-sans text-lg font-medium text-primary-700 hover:text-primary-600 hover:gap-2 transition-all">
                         Voir les tarifs
                         <ArrowRight :size="18" />
