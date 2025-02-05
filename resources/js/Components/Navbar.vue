@@ -63,8 +63,8 @@ onMounted(() => {
             <div id="navbar-links" class="flex gap-4 sm:gap-20 md:gap-44">
                 <nav class="pl-4 sm:pl-20 md:pl-44 flex gap-1 sm:px-6 font-dm-sans text-xs sm:text-sm font-medium">
                     <Link :href="route('contact.index')" class="my-auto px-2">Contact</Link>
-                    <a href="#section-projects" class="my-auto px-2">Projets</a>
-                    <a href="#section-pricing" class="my-auto px-2">Tarifs</a>
+                    <Link href="/#section-projects" class="my-auto px-2">Projets</Link>
+                    <Link href="/#section-projects" class="my-auto px-2">Tarifs</Link>
                 </nav>
 
                 <Link :href="route('contact.index')">
