@@ -1,10 +1,10 @@
 <script setup>
-import {Head} from "@inertiajs/vue3";
-import Footer from "@/Components/Footer.vue";
-import { useForm } from '@inertiajs/vue3';
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import Toaster from '@/components/ui/toast/Toaster.vue'
-import { useToast } from '@/components/ui/toast/use-toast'
+import {Head} from "@inertiajs/vue3"
+import Footer from "@/Components/Footer.vue"
+import { useForm } from '@inertiajs/vue3'
+import PrimaryButton from "@/Components/PrimaryButton.vue"
+import Toaster from '@/Components/ui/toast/Toaster.vue'
+import { useToast } from '@/Components/ui/toast/use-toast.js'
 
 const { toast } = useToast()
 
