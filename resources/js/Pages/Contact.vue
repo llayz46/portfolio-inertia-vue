@@ -5,7 +5,9 @@ import { useForm } from '@inertiajs/vue3'
 import PrimaryButton from "@/Components/PrimaryButton.vue"
 import Toaster from '@/Components/ui/toast/Toaster.vue'
 import { useToast } from '@/Components/ui/toast/use-toast'
+import {inject, onMounted} from "vue";
 
+const gsap = inject('gsap')
 const { toast } = useToast()
 
 const form = useForm({
@@ -23,6 +25,15 @@ const submit = () => {
         },
     })
 }
+
+onMounted(() => {
+    gsap.set('.section-content', { y: 35, opacity: 0, scale: 0.95 })
+    gsap.set('footer div', { y: 35, opacity: 0, scale: 0.95 })
+
+    gsap.to('.h1-title span', { y: 0, stagger: 0.05, delay: 0.2, duration: 0.3 })
+    gsap.to('.section-content', { y: 0, opacity: 1, scale: 1, delay: 1.1, duration: 0.7 })
+    gsap.to('footer div', { y: 0, opacity: 1, scale: 1, delay: 1.1, duration: 0.7 })
+})
 </script>
 
 <template>
@@ -49,9 +60,25 @@ const submit = () => {
         <main class="h-full pb-20 w-full bg-background">
             <Toaster />
 
-            <h1 class="tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl">Contactez-moi</h1>
+<!--            <h1 class="h1-title tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl">Contactez-moi</h1>-->
 
-            <section class="mt-20 md:mt-44 px-8 flex max-md:flex-col gap-16">
+            <h1 class="h1-title tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl [&>span]:inline-block [&>span]:translate-y-20 [&>span]:transition-transform [&>span]:delay-500">
+                <span>C</span>
+                <span>o</span>
+                <span>n</span>
+                <span>t</span>
+                <span>a</span>
+                <span>c</span>
+                <span>t</span>
+                <span>e</span>
+                <span>z</span>
+                <span>-</span>
+                <span>m</span>
+                <span>o</span>
+                <span>i</span>
+            </h1>
+
+            <section class="section-content mt-20 md:mt-44 px-8 flex max-md:flex-col gap-16">
                 <div class="md:w-1/2">
                     <p class="text-sm md:text-base">Que ce soit la création d’un site moderne, une refonte, ou le développement d'une solution sur-mesure, je suis là pour donner vie à vos idées !</p>
                 </div>
@@ -101,3 +128,10 @@ const submit = () => {
         <Footer />
     </div>
 </template>
+
+<style scoped>
+.h1-title {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    line-height: 5rem;
+}
+</style>
