@@ -319,7 +319,7 @@ onUnmounted(() => {
         <div class="max-sm:hidden absolute -top-4 left-1/2 -translate-x-1/2 w-[600px] h-[70px] mix-blend-hard-light bg-[radial-gradient(50%_90%_at_50%_0%,#91CCE880_5%,transparent_75%)] pointer-events-none select-none blur-lg" aria-hidden="true"></div>
 
         <HeroBlobsTopRight/>
-<!--        <SvgRays />-->
+        <SvgRays />
 
         <div class="flex flex-col max-sm:px-6 max-md:max-w-md max-md:items-center gap-6 pt-36 md:pt-52 h-full md:mx-16 lg:mx-24 2xl:mx-48 md:border-x md:border-dashed md:border-red-500 relative z-20" :class="space.left.padding" ref="heroContainer">
             <div class="relative">
