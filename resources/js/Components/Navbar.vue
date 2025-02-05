@@ -9,7 +9,7 @@ const gsap = inject('gsap')
 onMounted(() => {
     // const navbar = document.getElementById('navbar')
     // const navbarLinks = document.getElementById('navbar-links')
-    //
+
     // if (!navbar || !navbarLinks) return
 
     gsap.set("#navbar", { y: -75 })

@@ -3,10 +3,10 @@ import {Head} from "@inertiajs/vue3"
 import Footer from "@/Components/Footer.vue"
 import { useForm } from '@inertiajs/vue3'
 import PrimaryButton from "@/Components/PrimaryButton.vue"
-// import Toaster from '@/Components/ui/toast/Toaster.vue'
-// import { useToast } from '@/Components/ui/toast/use-toast'
+import Toaster from '@/Components/ui/toast/Toaster.vue'
+import { useToast } from '@/Components/ui/toast/use-toast'
 
-// const { toast } = useToast()
+const { toast } = useToast()
 
 const form = useForm({
     name: '',
@@ -18,7 +18,7 @@ const submit = () => {
     form.post(route('contact.store'), {
         preserveState: true,
         onSuccess: () => {
-            // toast({ description: "Votre message a bien été envoyé !" })
+            toast({ description: "Votre message a bien été envoyé !" })
             form.reset()
         },
     })
@@ -47,7 +47,7 @@ const submit = () => {
 
     <div class="h-screen flex flex-col">
         <main class="h-full pb-20 w-full bg-background">
-<!--            <Toaster />-->
+            <Toaster />
 
             <h1 class="tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl">Contactez-moi</h1>
 
