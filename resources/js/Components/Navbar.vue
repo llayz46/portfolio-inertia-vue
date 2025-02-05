@@ -10,52 +10,52 @@ onMounted(() => {
     const navbar = document.getElementById('navbar')
     const navbarLinks = document.getElementById('navbar-links')
 
-    if(navbar && navbarLinks) {
-        gsap.set(navbar, { y: -75 })
-        gsap.set(navbarLinks, { opacity: 0, width: 0 })
+    if (!navbar || !navbarLinks) return
 
-        trigger = gsap.to(navbar, {
-            scrollTrigger: {
-                trigger: "body",
-                start: "+90 top",
-                end: "+90 bottom",
-                onEnter: () => {
-                    gsap.to(navbar, {
-                        y: 0,
-                        duration: 0.4,
-                        ease: 'power1.out',
-                        onComplete: () => {
-                            gsap.to(navbarLinks, {
-                                opacity: 1,
-                                width: 'auto',
-                                duration: 1.2,
-                                ease: "power3.out",
-                            })
-                        }
-                    })
-                },
-                onLeaveBack: () => {
-                    gsap.to(navbarLinks, {
-                        opacity: 0,
-                        width: 0,
-                        duration: 1,
-                        ease: "power3.in",
-                        onComplete: () => {
-                            gsap.to(navbar, {
-                                y: -75,
-                                duration: 0.4,
-                                ease: 'power2.out',
-                            })
-                        }
-                    })
-                }
+    gsap.set(navbar, { y: -75 })
+    gsap.set(navbarLinks, { opacity: 0, width: 0 })
+
+    trigger = gsap.to(navbar, {
+        scrollTrigger: {
+            trigger: "body",
+            start: "+90 top",
+            end: "+90 bottom",
+            onEnter: () => {
+                gsap.to(navbar, {
+                    y: 0,
+                    duration: 0.4,
+                    ease: 'power1.out',
+                    onComplete: () => {
+                        gsap.to(navbarLinks, {
+                            opacity: 1,
+                            width: 'auto',
+                            duration: 1.2,
+                            ease: "power3.out",
+                        })
+                    }
+                })
             },
-        })
-    }
+            onLeaveBack: () => {
+                gsap.to(navbarLinks, {
+                    opacity: 0,
+                    width: 0,
+                    duration: 1,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        gsap.to(navbar, {
+                            y: -75,
+                            duration: 0.4,
+                            ease: 'power2.out',
+                        })
+                    }
+                })
+            }
+        },
+    })
 })
 
 onUnmounted(() => {
-    if (trigger) {
+    if (trigger?.scrollTrigger) {
         trigger.scrollTrigger.kill()
     }
 })
