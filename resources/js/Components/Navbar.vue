@@ -4,29 +4,29 @@ import { Link } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const gsap = inject('gsap')
-let trigger
+// let trigger
 
 onMounted(() => {
-    const navbar = document.getElementById('navbar')
-    const navbarLinks = document.getElementById('navbar-links')
+    // const navbar = document.getElementById('navbar')
+    // const navbarLinks = document.getElementById('navbar-links')
+    //
+    // if (!navbar || !navbarLinks) return
 
-    if (!navbar || !navbarLinks) return
+    gsap.set("#navbar", { y: -75 })
+    gsap.set("#navbar-links", { opacity: 0, width: 0 })
 
-    gsap.set(navbar, { y: -75 })
-    gsap.set(navbarLinks, { opacity: 0, width: 0 })
-
-    trigger = gsap.to(navbar, {
+    gsap.to("#navbar", {
         scrollTrigger: {
             trigger: "body",
             start: "+90 top",
             end: "+90 bottom",
             onEnter: () => {
-                gsap.to(navbar, {
+                gsap.to("#navbar", {
                     y: 0,
                     duration: 0.4,
                     ease: 'power1.out',
                     onComplete: () => {
-                        gsap.to(navbarLinks, {
+                        gsap.to("#navbar-links", {
                             opacity: 1,
                             width: 'auto',
                             duration: 1.2,
@@ -36,13 +36,13 @@ onMounted(() => {
                 })
             },
             onLeaveBack: () => {
-                gsap.to(navbarLinks, {
+                gsap.to("#navbar-links", {
                     opacity: 0,
                     width: 0,
                     duration: 1,
                     ease: "power3.in",
                     onComplete: () => {
-                        gsap.to(navbar, {
+                        gsap.to("#navbar", {
                             y: -75,
                             duration: 0.4,
                             ease: 'power2.out',
@@ -54,11 +54,11 @@ onMounted(() => {
     })
 })
 
-onUnmounted(() => {
-    if (trigger?.scrollTrigger) {
-        trigger.scrollTrigger.kill()
-    }
-})
+// onUnmounted(() => {
+//     if (trigger?.scrollTrigger) {
+//         trigger.scrollTrigger.kill()
+//     }
+// })
 </script>
 
 <template>
