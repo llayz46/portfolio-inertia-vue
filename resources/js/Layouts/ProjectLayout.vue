@@ -28,7 +28,7 @@ defineProps({
         <meta name="twitter:image" content="https://llayz.fr/images/seo/portfolio-seo-image.webp">
     </Head>
 
-    <main class="relative bg-background pb-20">
+    <main class="relative bg-background pb-32">
         <slot/>
 
         <svg class="absolute top-20 right-20 fill-primary-600/15 blur-2xl" width="302" height="301" viewBox="0 0 302 301" fill="none">
