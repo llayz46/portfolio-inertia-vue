@@ -54,18 +54,18 @@ defineProps({
 }
 
 .top-step-4 {
-    @apply top-4 right-4 bg-[#24CD6F]/50;
+    @apply top-1/4 right-2 bg-[#56627B];
 }
 
 .bottom-step-4 {
-    @apply bottom-4 left-4 bg-primary-800/65;
+    @apply bottom-2 left-2 bg-[#908989];
 }
 
 .top-step-5 {
-    @apply bottom-0 right-2 bg-[#24CD6F]/50;
+    @apply top-1/4 right-2 bg-[#93C5FF];
 }
 
 .bottom-step-5 {
-    @apply top-4 left-4 bg-primary-800/65;
+    @apply bottom-0 left-2 bg-[#469CFF];
 }
 </style>
