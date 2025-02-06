@@ -60,8 +60,6 @@ onMounted(() => {
         <main class="h-full pb-20 w-full bg-background">
             <Toaster />
 
-<!--            <h1 class="h1-title tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl">Contactez-moi</h1>-->
-
             <h1 class="h1-title tracking-small pt-8 pl-8 text-4xl sm:text-6xl md:text-8xl [&>span]:inline-block [&>span]:translate-y-20 [&>span]:transition-transform [&>span]:delay-500">
                 <span>C</span>
                 <span>o</span>

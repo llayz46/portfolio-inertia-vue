@@ -112,7 +112,6 @@ const filteredTechnologies = computed(() => props.technologies.filter(t => !tech
                                         v-model="form.github"
                                         type="text"
                                         class="mt-1 block w-full"
-                                        required
                                     />
                                     <InputError class="mt-2" :message="errors.github" />
                                 </div>
